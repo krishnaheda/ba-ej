@@ -1,352 +1,206 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>नदी और एल्गोरिदम: इंटरैक्टिव अन्वेषण</title>
+    <title>River and Algorithm - Simple Story</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'hi,en,es,fr,de,zh,ja,ar,ru,pt,it,ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
-        body {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            background-color: #FDFBF8;
-            color: #383838;
-            direction: ltr;
-        }
-        .bg-gradient-custom {
-            background: linear-gradient(180deg, #FDFBF8 0%, #F5F1EB 100%);
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link.active {
-            color: #A0522D;
-            border-bottom-color: #A0522D;
-        }
-        .card-bg {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-        }
-        .story-container {
-            max-height: 80vh;
-            overflow-y: auto;
-            border: 1px solid #E5E7EB;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-        }
-        .hindi-text {
-            line-height: 1.8;
-            text-align: justify;
-        }
-        .concept-sanskrit {
-            font-family: 'Noto Sans Devanagari', serif;
-            font-weight: 700;
-            color: #A0522D;
-        }
+        .goog-te-banner-frame { display: none !important; }
+        .goog-te-gadget-simple { border: none !important; background: transparent !important; }
+        .goog-te-menu-value span { color: #333 !important; }
+        .skiptranslate iframe { display: none !important; }
+        body { top: 0px !important; }
     </style>
 </head>
-<body class="antialiased">
-    <div class="min-h-screen bg-gradient-custom">
-        <header class="p-4 md:p-6 sticky top-0 bg-white/80 backdrop-blur-lg z-10 shadow-sm">
-            <div class="container mx-auto flex justify-between items-center">
-                <h1 class="text-xl md:text-2xl font-bold text-[#A0522D]">नदी और एल्गोरिदम</h1>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#story" class="nav-link text-gray-600 hover:text-[#A0522D] border-b-2 border-transparent pb-1 active">मैराथन कहानी</a>
-                    <a href="#dashboard" class="nav-link text-gray-600 hover:text-[#A0522D] border-b-2 border-transparent pb-1">डैशबोर्ड</a>
-                    <a href="#characters" class="nav-link text-gray-600 hover:text-[#A0522D] border-b-2 border-transparent pb-1">पात्र</a>
-                    <a href="#marketplace" class="nav-link text-gray-600 hover:text-[#A0522D] border-b-2 border-transparent pb-1">बाजार</a>
-                    <a href="#concepts" class="nav-link text-gray-600 hover:text-[#A0522D] border-b-2 border-transparent pb-1">मुख्य अवधारणाएं</a>
-                </nav>
-                <button id="mobile-menu-button" class="md:hidden text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-800">River & Algorithm</h1>
+                <div id="google_translate_element" class="bg-white rounded-lg border p-2"></div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
-                <a href="#story" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">मैराथन कहानी</a>
-                <a href="#dashboard" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">डैशबोर्ड</a>
-                <a href="#characters" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">पात्र</a>
-                <a href="#marketplace" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">बाजार</a>
-                <a href="#concepts" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">मुख्य अवधारणाएं</a>
-            </div>
-        </header>
+        </div>
+    </header>
 
-        <main class="container mx-auto p-4 md:p-8">
-            <!-- MARATHON STORY SECTION -->
-            <section id="story" class="scroll-mt-20 mt-8">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6">मैराथन कहानी: नदी और एल्गोरिदम</h2>
-                <div class="story-container card-bg hindi-text">
-                    <h3 class="text-center text-2xl font-bold text-[#A0522D] mb-4">अध्याय 1: आत्मा का बॉक्स ऑफिस</h3>
-
-                    <p><span class="concept-sanskrit">वृंदावन 2.0</span> के डेटा-झोपड़ी में हवा सिर्फ जैविक फसलों की गंध से नहीं, बल्कि घेराबंदी वाले बाजार की विद्युत तनाव से गूंज रही थी। बाहर, सौर ऊर्जा और <span class="concept-sanskrit">सेवा की प्रतिज्ञा</span> से संचालित स्वचालित उर्ध्वाधर फार्म, वैश्विक बाजार की बाँझ तर्क के जीवंत, सजीव विरोधाभास के रूप में छतरी की ओर सर्पिल हो रहे थे।</p>
-
-                    <p><span class="concept-sanskrit">किशन</span>, आर्किटेक्ट, मुख्य कंसोल के सामने खड़ा था। वह सन्निहित विरोधाभास था: एक ऐसा व्यक्ति जिसके हाथ जैविक खेती की मिट्टी को जानते थे, लेकिन जिसका मन ब्रह्मांड के कैलकुलस पर काम करता था।</p>
-
-                    <p>"ललिता, तुमने फिर से नदी तोड़ दी," किशन ने कहा, उसकी आवाज़ एक निम्न, पूरी तरह से मॉड्यूलेटेड बैरिटोन थी जो विश्लेषण करती थी, आरोप नहीं लगाती थी।</p>
-
-                    <p><span class="concept-sanskrit">ललिता</span>, मुख्य सामग्री रणनीतिकार और <span class="concept-sanskrit">लालसा और आकर्षण बाजार</span> की रानी, घूमकर मुड़ी। उसकी ऊर्जा मान्यता की जंगल की आग थी; वह डोपामाइन की लहर का पीछा उतनी ही निरंतरता से करती थी जितनी कि उसके उपयोगकर्ता करते थे।</p>
-
-                    <div class="bg-yellow-50 p-4 rounded-lg my-4 border-l-4 border-yellow-400">
-                        <p class="font-semibold">ललिता की सामग्री मीट्रिक:</p>
-                        <p>9.4 मिलियन व्यूज। औसत संलग्नता समय: 9.9 सेकंड। बाजार प्रभाव (बाजी स्कोर): संबंधित रोमांस फिक्शन बिक्री पर +21%</p>
-                    </div>
-
-                    <p>"बाजार को रश पसंद है। उन्हें दर्द पसंद है। उन्हें आसान जवाब पसंद है," ललिता ने आगे बढ़ते हुए कहा। "आप चाहते हैं कि मैं उन्हें <span class="concept-sanskrit">मुदिता</span> और <span class="concept-sanskrit">उपेक्षा</span> बेचूं? यह डूबे हुए आदमी को पानी बेचने की कोशिश करने जैसा है।"</p>
-
-                    <h3 class="text-center text-2xl font-bold text-[#A0522D] mb-4 mt-8">अध्याय 2: चिंता का बीज और वैराग्य की प्रतिज्ञा</h3>
-
-                    <p><span class="concept-sanskrit">राधा</span>, किशन की लंगर और <span class="concept-sanskrit">बीज</span> (दार्शनिक बीज) पर केंद्रित मुख्य विश्लेषक, आगे बढ़ी। वह हृदय और मस्तिष्क के बीच तनाव का प्रतीक थी।</p>
-
-                    <p>"पिछले एक घंटे में सफरिंग इंडेक्स 8.5% बढ़ गया है, ललिता," राधा ने कहा, उसकी आवाज डेटा की गंभीरता से भारी थी।</p>
-
-                    <p>राधा डिजिटल अराजकता से दूर <span class="concept-sanskrit">बीज उद्यान</span> में चली गई - बाजार के डेटा स्तर का भौतिक प्रतिनिधित्व।</p>
-
-                    <p>"बुजुर्ग फिर से सक्रिय हैं," किशन ने आह भरते हुए कहा।</p>
-
-                    <h3 class="text-center text-2xl font-bold text-[#A0522D] mb-4 mt-8">अध्याय 3: आत्मीयता की विनिमय दर और ट्रोजन हॉर्स</h3>
-
-                    <p>वृंदावन 2.0 समुदाय केंद्रीय गुंबद में मिला। उद्देश्य: अपने पारलौकिक दार्शनिक मॉडल को ललिता के फास्ट-फूड मनोरंजन के आदी बाजार में कैसे बेचा जाए।</p>
-
-                    <p><span class="concept-sanskrit">विशाखा</span>, <span class="concept-sanskrit">मित्रता और निष्ठा बाजार</span> की प्रमुख प्रबंधक, ने सामाजिक पूंजी और भावनात्मक मुद्रा पर अपने निष्कर्ष प्रस्तुत किए।</p>
-
-                    <p>"हमारा मुख्य जनसांख्यिकी, 18-35, किताबें नहीं खरीदता है," विशाखा ने कहा। "वे <span class="concept-sanskrit">भावनात्मक मुद्रा</span> खरीदते हैं।"</p>
-
-                    <p>"तो हम उन्हें सच बताते हैं: कि उनका दुख अस्थायी में स्थायित्व की तलाश से आता है," राधा ने जोर देकर कहा।</p>
-
-                    <p>"हमने कोशिश की। बिक्री लगभग शून्य थी," विशाखा ने कहा।</p>
-                </div>
-            </section>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Story Sections -->
+        <section class="mb-12 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">The River and The Algorithm</h2>
             
-            <!-- INTERACTIVE DASHBOARD SECTION -->
-            <section id="dashboard" class="scroll-mt-20 mt-20">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">वृंदावन 2.0 लाइव डैशबोर्ड</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">यह डैशबोर्ड एग्रो-मार्केटप्लेस के मुख्य मेट्रिक्स को दर्शाता है, जो <span class="concept-sanskrit">सचेतन चयन</span> और वाणिज्यिक शोषण के बीच चल रहे संघर्ष को प्रदर्शित करता है।</p>
-                </div>
+            <!-- Chapter 1 -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-blue-600 mb-4 border-b pb-2">Chapter 1: The Digital Marketplace</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    In the heart of the digital world, two forces were at war: the timeless flow of human connection and the precise logic of algorithms. 
+                    Kishan, the architect, believed in systems that served humanity. Lalita, the content queen, understood what sold in the marketplace.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    "Your algorithms create addiction," Kishan argued. "My content gives people what they want," Lalita countered. 
+                    Between them stood Radha, trying to find the balance between wisdom and engagement.
+                </p>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
-                    <div class="card-bg p-6 rounded-lg shadow-md border border-gray-200">
-                        <h3 class="text-xl font-semibold text-gray-700 mb-2">ग्राहक परिपक्वता स्तर (GML)</h3>
-                        <p class="text-5xl font-bold text-[#A0522D]" id="gml-value">3.1</p>
-                        <p class="text-gray-500 mt-2">वर्तमान रीडिंग: लाभ/इच्छा केंद्रित। लक्ष्य: 4.5</p>
+            <!-- Chapter 2 -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-blue-600 mb-4 border-b pb-2">Chapter 2: The Beej Framework</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Kishan developed the Beej-Bhojy-Bhaji framework to understand digital marketplaces:
+                </p>
+                <div class="grid md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <h4 class="font-bold text-blue-700 mb-2">Beej (Seed)</h4>
+                        <p class="text-sm">The core intention behind every action</p>
                     </div>
-                    <div class="card-bg p-6 rounded-lg shadow-md border border-gray-200">
-                        <h3 class="text-xl font-semibold text-gray-700 mb-2">दुख सूचकांक</h3>
-                        <p class="text-5xl font-bold text-red-500" id="suffering-value">+5%</p>
-                        <p class="text-gray-500 mt-2">पिछले एक घंटे में परिवर्तन (भावनात्मक ऋण)</p>
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="font-bold text-green-700 mb-2">Bhojy (Sustenance)</h4>
+                        <p class="text-sm">What people truly consume and need</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                        <h4 class="font-bold text-yellow-700 mb-2">Bhaji (Cooking)</h4>
+                        <p class="text-sm">The marketplace where exchange happens</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <h4 class="font-bold text-red-700 mb-2">Bazi (Game)</h4>
+                        <p class="text-sm">The competition and its outcomes</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- CHARACTERS SECTION -->
-            <section id="characters" class="mt-20 scroll-mt-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">मुख्य पात्र: दर्शन और पक्षपात</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="group card-bg p-6 rounded-lg shadow-lg border border-gray-200 transform hover:-translate-y-2 transition-transform duration-300">
-                        <h3 class="text-2xl font-bold text-[#A0522D] mb-3">किशन (आर्किटेक्ट)</h3>
-                        <p class="text-gray-600 mb-4">'उच्चतर मस्तिष्क' के प्रति निष्ठा। सिस्टमिक सत्य और <span class="concept-sanskrit">उपेक्षा</span> (समभाव) पर केंद्रित। जोखिम: भावनात्मक वैराग्य।</p>
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-                            <p class="font-semibold text-gray-700">मुख्य विश्वास:</p>
-                            <p class="text-gray-600">"करुणा एक लेन-देन है। हमें सिस्टम का निदान करना चाहिए, नोड्स के लिए खेद महसूस नहीं करना चाहिए।"</p>
-                        </div>
-                    </div>
-                    <div class="group card-bg p-6 rounded-lg shadow-lg border border-gray-200 transform hover:-translate-y-2 transition-transform duration-300">
-                        <h3 class="text-2xl font-bold text-emerald-700 mb-3">राधा (इरादा खोजक)</h3>
-                        <p class="text-gray-600 mb-4">हृदय से संचालित। <span class="concept-sanskrit">बीज</span> की शुद्धता की तलाश करती है और बाजार की मानवीय लागत से डरती है। जोखिम: आसक्ति और पक्षपात।</p>
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-                            <p class="font-semibold text-gray-700">मुख्य विश्वास:</p>
-                            <p class="text-gray-600">"एल्गोरिदम सेवा की खुशी चुरा रहा है। हमें दर्द को ठीक करना होगा।"</p>
-                        </div>
-                    </div>
-                    <div class="group card-bg p-6 rounded-lg shadow-lg border border-gray-200 transform hover:-translate-y-2 transition-transform duration-300">
-                        <h3 class="text-2xl font-bold text-rose-600 mb-3">ललिता (बाजार रानी)</h3>
-                        <p class="text-gray-600 mb-4"><span class="concept-sanskrit">बाजी</span> (दांव) की महारत। लालसा और विचलन की अपरिवर्तनीय सांख्यिकी में विश्वास करती है। जोखिम: अकुशल प्रयोगकर्ताओं के साथ अनुपालन।</p>
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-                            <p class="font-semibold text-gray-700">मुख्य विश्वास:</p>
-                            <p class="text-gray-600">"बाजार ट्रोजन हॉर्स स्वीकार करता है। कहानियाँ यथार्थवादी परिवर्तन नहीं लाती; वे विचलन हैं।"</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <!-- Chapter 3 -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-blue-600 mb-4 border-b pb-2">Chapter 3: The Conscious Choice</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    As the team worked together, they discovered that the most valuable marketplace wasn't about attention or money. 
+                    It was about conscious choices that created meaningful connections.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    "We're not just building technology," Kishan realized. "We're building the future of human interaction."
+                </p>
+            </div>
+        </section>
 
-            <!-- MARKETPLACE SECTION -->
-            <section id="marketplace" class="mt-20 scroll-mt-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">संघर्ष विज़ुअलाइज़ेशन: लाभ बनाम लागत</h2>
-                <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">नीचे दिया गया चार्ट ललिता की वाणिज्यिक सफलता और <span class="concept-sanskrit">आत्मा का बॉक्स ऑफिस</span> में दर्ज हुए परिणामी भावनात्मक लागत के बीच के संघर्ष को दर्शाता है। उच्च-लाभ सामग्री पर उपयोगकर्ता संलग्नता से सामाजिक लागत में वृद्धि होती है।</p>
-                <div class="chart-container">
-                    <canvas id="marketplaceChart"></canvas>
+        <!-- Dashboard -->
+        <section class="mb-12 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Marketplace Analytics</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2">Grahak Maturity Level</h3>
+                    <p class="text-3xl font-bold">3.8/5.0</p>
+                    <p class="text-blue-100 text-sm mt-2">Growing towards conscious consumption</p>
                 </div>
-            </section>
+                <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2">Content Impact Score</h3>
+                    <p class="text-3xl font-bold">72%</p>
+                    <p class="text-green-100 text-sm mt-2">Positive influence on users</p>
+                </div>
+            </div>
 
-            <!-- CORE CONCEPTS SECTION -->
-            <section id="concepts" class="mt-20 scroll-mt-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">मुख्य अवधारणाएं: ग्राहकवाद शब्दकोश</h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="mb-6">
-                        <input type="text" id="concept-search" placeholder="अवधारणाएं खोजें (जैसे: बीज, मुदिता)..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#A0522D] focus:border-transparent transition">
-                    </div>
-                    <div id="concept-list" class="space-y-4">
-                        <div class="concept-item card-bg p-6 rounded-lg shadow-md border border-gray-200" data-keywords="grahakvaad maturity level gml infovaad">
-                            <h3 class="text-xl font-bold text-gray-800">ग्राहकवाद और इन्फोवाद</h3>
-                            <p class="text-gray-600 mt-2"><span class="concept-sanskrit">ग्राहकवाद:</span> विकसित उपभोक्ता/योगदानकर्ता का दर्शन। <span class="concept-sanskrit">इन्फोवाद:</span> वैश्विक मन के लिए जागरूक खपत और योगदान का विज्ञान। वे बाजार के <span class="concept-sanskrit">GML</span> (परिपक्वता स्तर) को मापते हैं।</p>
-                        </div>
-                        <div class="concept-item card-bg p-6 rounded-lg shadow-md border border-gray-200" data-keywords="beej seed bhojy bhaji bazi">
-                            <h3 class="text-xl font-bold text-gray-800">बीज, भोज्य, भाजी, बाजी</h3>
-                            <p class="text-gray-600 mt-2">अस्तित्वगत बाजार की चार शक्तियां: <span class="concept-sanskrit">बीज</span> (इरादे का बीज), <span class="concept-sanskrit">भोज्य</span> (पोषण/खपत), <span class="concept-sanskrit">भाजी</span> (बाजार/अखाड़ा/नियम), <span class="concept-sanskrit">बाजी</span> (खेल/दांव/परिणाम)।</p>
-                        </div>
-                        <div class="concept-item card-bg p-6 rounded-lg shadow-md border border-gray-200" data-keywords="mudita upekkhā higher head detachment">
-                            <h3 class="text-xl font-bold text-gray-800">मुदिता और उपेक्षा (उच्चतर मस्तिष्क)</h3>
-                            <p class="text-gray-600 mt-2">सचेतन आर्किटेक्ट का लक्ष्य। <span class="concept-sanskrit">मुदिता:</span> सहानुभूतिपूर्ण आनंद (आसक्ति के बिना देखभाल)। <span class="concept-sanskrit">उपेक्षा:</span> समभाव/वैराग्य (पक्षपात के बिना ज्ञान)। यह पक्षपाती, आसक्त हृदय को पार कर जाता है।</p>
-                        </div>
-                        <div class="concept-item card-bg p-6 rounded-lg shadow-md border border-gray-200" data-keywords="elders unskilled experimenters mrityu bazaar">
-                            <h3 class="text-xl font-bold text-gray-800">अकुशल प्रयोगकर्ता और मृत्यु बाजार</h3>
-                            <p class="text-gray-600 mt-2">बाजार के छिपे हुए नियंत्रक। <span class="concept-sanskrit">बुजुर्ग:</span> अपरिपक्व उच्च-क्रम बुद्धिमत्ता जो वास्तविकता को अराजक अल्फा-टेस्ट के रूप में चलाती है। <span class="concept-sanskrit">मृत्यु बाजार:</span> मृत्यु का बाजार, जहां मुद्रा ग्राहक का समय और जीवन शक्ति है।</p>
-                        </div>
-                    </div>
+            <div class="chart-container bg-gray-50 p-4 rounded-lg">
+                <canvas id="marketChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Key Concepts -->
+        <section class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Core Concepts</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border-l-4 border-blue-500 pl-4">
+                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Grahakvaad</h3>
+                    <p class="text-gray-600">The philosophy of conscious consumption and contribution in digital spaces.</p>
                 </div>
-            </section>
-        </main>
-    </div>
+                <div class="border-l-4 border-green-500 pl-4">
+                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Mudita</h3>
+                    <p class="text-gray-600">Finding joy in others' growth and success without envy.</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4">
+                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Upekkha</h3>
+                    <p class="text-gray-600">Equanimity and balance in the face of marketplace fluctuations.</p>
+                </div>
+                <div class="border-l-4 border-orange-500 pl-4">
+                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Infovaad</h3>
+                    <p class="text-gray-600">The science of information flow and its impact on consciousness.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">The River and The Algorithm - Exploring Conscious Digital Marketplaces</p>
+            <p class="text-gray-400 text-sm">Available in multiple languages through Google Translate</p>
+        </div>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            const navLinks = document.querySelectorAll('header nav a');
-            const sections = document.querySelectorAll('main section');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${entry.target.id}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, { rootMargin: '-30% 0px -30% 0px' });
-
-            sections.forEach(section => observer.observe(section));
-
-            const gmlValue = document.getElementById('gml-value');
-            const sufferingValue = document.getElementById('suffering-value');
-            let gml = 3.15;
-            let suffering = 5.2;
-
-            const updateDashboard = () => {
-                gml += (Math.random() - 0.45) * 0.02; 
-                suffering += (Math.random() - 0.4) * 0.4;
-                if(gml < 2.5) gml = 2.5;
-                if(gml > 3.5) gml = 3.5;
-                if(suffering < 2) suffering = 2;
-                if(suffering > 9) suffering = 9;
-                
-                gmlValue.textContent = gml.toFixed(2);
-                sufferingValue.textContent = (suffering > 0 ? '+' : '') + suffering.toFixed(1) + '%';
-            };
-
-            updateDashboard(); 
-            setInterval(updateDashboard, 2500);
-
-            const ctx = document.getElementById('marketplaceChart').getContext('2d');
-            const marketplaceChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['ललिता के व्यू (विचलन)', 'संबंधित फिक्शन बिक्री (प्रभाव)', 'दुख सूचकांक (लागत)'],
-                    datasets: [{
-                        label: 'बाजार प्रदर्शन बनाम सामाजिक लागत',
-                        data: [94, 21, 8.5],
-                        backgroundColor: [
-                            'rgba(219, 112, 147, 0.7)', 
-                            'rgba(219, 112, 147, 0.9)',
-                            'rgba(239, 68, 68, 0.7)'    
-                        ],
-                        borderColor: [
-                            'rgba(219, 112, 147, 1)',
-                            'rgba(219, 112, 147, 1)',
-                            'rgba(239, 68, 68, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value, index, values) {
-                                    if (index < 2) return value; 
-                                    return value + '%';
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.x !== null) {
-                                        if (context.label.includes('लागत')) {
-                                            label += `+${context.parsed.x}% (भावनात्मक ऋण)`;
-                                        } else if (context.label.includes('बिक्री')) {
-                                             label += `+${context.parsed.x}% वृद्धि`;
-                                        }
-                                        else {
-                                            label += `${context.parsed.x / 10} मिलियन व्यूज`;
-                                        }
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
+        // Simple Chart
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Conscious Content Engagement',
+                    data: [30, 45, 52, 61, 68, 72],
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Addictive Content Engagement',
+                    data: [85, 78, 72, 65, 58, 52],
+                    borderColor: '#EF4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Marketplace Engagement Trends'
                     }
                 }
-            });
+            }
+        });
 
-            const conceptSearch = document.getElementById('concept-search');
-            const conceptItems = document.querySelectorAll('.concept-item');
-            conceptSearch.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                conceptItems.forEach(item => {
-                    const keywords = item.getAttribute('data-keywords');
-                    if (keywords.includes(searchTerm)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
+        // Auto-translate content when language changes
+        function listenForTranslation() {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        // Content has been translated
+                        console.log('Content translated');
                     }
                 });
             });
-        });
+            
+            observer.observe(document.body, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', listenForTranslation);
     </script>
 </body>
 </html>
