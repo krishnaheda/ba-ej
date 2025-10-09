@@ -3,1396 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>River and Algorithm - Simple Story</title>
+    <title>BA-EJ: The Marketplace Encyclopedia | AI+ Book</title>
+    <meta name="description" content="Free interactive AI+ book exploring 35+ existential marketplaces. Beej-Bhojy-Bhaji-Bazi framework for conscious evolution.">
+    <meta name="google-adsense-account" content="ca-pub-7582671626839217">
+    <meta name="keywords" content="marketplace, consciousness, AI book, free book, philosophy, economics, digital evolution">
+    
+    <!-- Minimal CSS Framework -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- REPLACE THE ENTIRE STORY CONTAINER SECTION -->
-<section id="story" class="scroll-mt-20 mt-8">
-    <div class="text-center mb-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">The Conscious Reading Experience</h2>
-        <div class="bg-green-50 border border-green-200 rounded-lg p-4 max-w-2xl mx-auto">
-            <p class="text-green-800 text-sm">
-                🌱 <strong>Eco-Mode Active:</strong> Content loads only when you're truly reading. 
-                Saves computing energy and reduces digital pollution. 
-                Consider reading in community gatherings to share resources!
-            </p>
-        </div>
-    </div>
-
-    <div class="story-container card-bg" style="max-height: 70vh;">
-        <div id="storyContent">
-            <!-- Content loads here dynamically -->
-        </div>
-        
-        <!-- Loading indicator -->
-        <div id="loadingIndicator" class="text-center py-8 hidden">
-            <div class="inline-flex items-center">
-                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600 mr-3"></div>
-                <span class="text-gray-600">Loading meaningful content...</span>
-            </div>
-        </div>
-
-        <!-- End of content message -->
-        <div id="endOfContent" class="text-center py-8 hidden">
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-md mx-auto">
-                <h3 class="font-semibold text-blue-800 mb-2">Conscious Reading Complete</h3>
-                <p class="text-blue-700 text-sm mb-4">
-                    You've absorbed the available wisdom. Would you like to continue or reflect on what you've learned?
-                </p>
-                <div class="space-y-2">
-                    <button onclick="loadMoreContent()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">
-                        Load More Wisdom
-                    </button>
-                    <button onclick="showReflectionPrompt()" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
-                        Reflect & Apply
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Reading Statistics -->
-    <div class="mt-4 text-center">
-        <div class="inline-flex space-x-6 text-sm text-gray-600">
-            <div>
-                <span class="font-semibold" id="loadedChapters">0</span> chapters loaded
-            </div>
-            <div>
-                <span class="font-semibold" id="energySaved">0</span>% energy saved
-            </div>
-            <div>
-                <span class="font-semibold" id="readingTime">0</span>min conscious reading
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <!-- ADD THIS SCRIPT SECTION -->
-<script>
-// Eco-conscious content loading system
-class ConsciousReader {
-    constructor() {
-        this.currentChapter = 0;
-        this.chapters = [];
-        this.isLoading = false;
-        this.hasMoreContent = true;
-        this.readingStartTime = Date.now();
-        
-        this.initializeContent();
-        this.setupScrollListener();
-        this.updateStatistics();
-    }
-
-    async initializeContent() {
-        // Simulate fetching chapter index
-        this.chapters = await this.fetchChapterIndex();
-        this.loadInitialContent();
-    }
-
-    async fetchChapterIndex() {
-        // In real implementation, this would fetch from GitHub or API
-        return [
-            { id: 1, title: "Chapter 1: The Box Office of the Soul", wordCount: 1200 },
-            { id: 2, title: "Chapter 2: The Beej of Anxiety", wordCount: 950 },
-            { id: 3, title: "Chapter 3: The Exchange Rate of Intimacy", wordCount: 1100 },
-            { id: 4, title: "Chapter 4: The Great Excuse", wordCount: 1300 },
-            { id: 5, title: "Chapter 5: The Transcendence Wager", wordCount: 1400 },
-            { id: 6, title: "Chapter 6: The Global Contribution Ledger", wordCount: 1250 },
-            { id: 7, title: "Chapter 7: The Final Transaction", wordCount: 1350 },
-            { id: 8, title: "Exploration 3: Global Wisdom Marketplace", wordCount: 1600 }
-        ];
-    }
-
-    loadInitialContent() {
-        // Load first 2 chapters immediately
-        this.loadChapter(0);
-        this.loadChapter(1);
-        this.currentChapter = 2;
-    }
-
-    async loadChapter(index) {
-        if (index >= this.chapters.length) {
-            this.showEndOfContent();
-            return;
-        }
-
-        this.showLoading();
-        
-        // Simulate network delay and processing
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
-        const chapter = this.chapters[index];
-        const content = await this.fetchChapterContent(chapter.id);
-        
-        this.appendContent(content);
-        this.hideLoading();
-        this.updateStatistics();
-    }
-
-    async fetchChapterContent(chapterId) {
-        // In real implementation, fetch from GitHub pages or API
-        // For now, return simulated content
-        const chapterTemplates = {
-            1: `<h3 class="text-center text-2xl font-bold text-[#A0522D] mb-4">Chapter 1: The Box Office of the Soul</h3>
-                <p>The air in the <strong>Vrindavan 2.0</strong> data-hut was not just thick with the scent of loamy soil and bio-integrated crops; it hummed with the electric tension of a marketplace under siege...</p>`,
-            2: `<h3 class="text-center text-2xl font-bold text-[#A0522D] mb-4">Chapter 2: The Beej of Anxiety</h3>
-                <p>Radha walked away from the digital chaos and into the quiet sanctuary of the <strong>Beej Garden</strong>—the physical representation of the Marketplace's data layer...</p>`,
-            // Add more chapter templates as needed
-        };
-        
-        return chapterTemplates[chapterId] || `<h3>Chapter ${chapterId}</h3><p>Content loading...</p>`;
-    }
-
-    appendContent(content) {
-        const container = document.getElementById('storyContent');
-        const chapterDiv = document.createElement('div');
-        chapterDiv.className = 'chapter-content mb-8';
-        chapterDiv.innerHTML = content;
-        container.appendChild(chapterDiv);
-    }
-
-    setupScrollListener() {
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                this.checkScrollPosition();
-            }, 100);
-        });
-    }
-
-    checkScrollPosition() {
-        if (this.isLoading || !this.hasMoreContent) return;
-        
-        const scrollPosition = window.innerHeight + window.scrollY;
-        const pageHeight = document.documentElement.scrollHeight;
-        const distanceFromBottom = pageHeight - scrollPosition;
-        
-        // Load more content when 300px from bottom and user has been reading
-        if (distanceFromBottom < 300 && this.isUserReading()) {
-            this.loadMoreContent();
-        }
-    }
-
-    isUserReading() {
-        // Simple heuristic: if user has been active recently
-        const timeSinceLastActivity = Date.now() - this.readingStartTime;
-        return timeSinceLastActivity < 300000; // 5 minutes
-    }
-
-    async loadMoreContent() {
-        if (this.isLoading) return;
-        
-        this.isLoading = true;
-        await this.loadChapter(this.currentChapter);
-        this.currentChapter++;
-        this.isLoading = false;
-        
-        if (this.currentChapter >= this.chapters.length) {
-            this.hasMoreContent = false;
-        }
-    }
-
-    showLoading() {
-        document.getElementById('loadingIndicator').classList.remove('hidden');
-    }
-
-    hideLoading() {
-        document.getElementById('loadingIndicator').classList.add('hidden');
-    }
-
-    showEndOfContent() {
-        document.getElementById('endOfContent').classList.remove('hidden');
-        this.hasMoreContent = false;
-    }
-
-    updateStatistics() {
-        const loadedChapters = Math.min(this.currentChapter, this.chapters.length);
-        const energySaved = Math.round((1 - (loadedChapters / this.chapters.length)) * 100);
-        const readingTime = Math.round((Date.now() - this.readingStartTime) / 60000);
-        
-        document.getElementById('loadedChapters').textContent = loadedChapters;
-        document.getElementById('energySaved').textContent = energySaved;
-        document.getElementById('readingTime').textContent = readingTime;
-    }
-}
-
-// Global functions for buttons
-function loadMoreContent() {
-    if (window.reader) {
-        window.reader.loadMoreContent();
-    }
-}
-
-function showReflectionPrompt() {
-    const reflection = `
-        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-4">
-            <h4 class="font-semibold text-yellow-800 mb-3">🌱 Reflection & Application</h4>
-            <p class="text-yellow-700 text-sm mb-4">
-                <strong>Community Reading Tip:</strong> Consider discussing this content in groups to save individual computing resources and enhance understanding through shared insights.
-            </p>
-            <div class="space-y-2">
-                <p class="text-xs text-yellow-600">
-                    <strong>Questions for reflection:</strong><br>
-                    - What insights resonated most with you?<br>
-                    - How can you apply this wisdom today?<br>
-                    - Who could benefit from discussing this together?
-                </p>
-            </div>
-        </div>
-    `;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    document.getElementById('storyContent').insertAdjacentHTML('beforeend', reflection);
-}
-
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    window.reader = new ConsciousReader();
-});
-</script>
-
-
-    
-    <!-- Google Translate -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'hi,en,es,fr,de,zh,ja,ar,ru,pt,it,ko',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
-        .goog-te-banner-frame { display: none !important; }
-        .goog-te-gadget-simple { border: none !important; background: transparent !important; }
-        .goog-te-menu-value span { color: #333 !important; }
-        .skiptranslate iframe { display: none !important; }
-        body { top: 0px !important; }
+        /* GitHub Dark Theme */
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --border: #30363d;
+        }
+        
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .github-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .github-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .minimal-chart {
+            background: transparent !important;
+        }
+        
+        .icon-button {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+        
+        .icon-button:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b">
+<body class="min-h-screen">
+    <!-- Header - GitHub Style -->
+    <header class="border-b border-[#30363d] bg-[#0d1117] sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-gray-800">River & Algorithm</h1>
-                <div id="google_translate_element" class="bg-white rounded-lg border p-2"></div>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 bg-[#58a6ff] rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">BE</span>
+                    </div>
+                    <nav class="hidden md:flex space-x-6 text-sm">
+                        <a href="#explorations" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Explorations</a>
+                        <a href="#framework" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Framework</a>
+                        <a href="#metrics" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Metrics</a>
+                        <a href="#contribute" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Contribute</a>
+                    </nav>
+                </div>
+                
+                <div class="flex items-center space-x-3">
+                    <a href="https://github.com/your-repo" target="_blank" class="icon-button w-8 h-8 rounded flex items-center justify-center text-xs">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <button class="bg-[#238636] text-white px-4 py-1 rounded text-sm hover:bg-[#2ea043] transition">
+                        Read Free
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- ADD AS NEW INTRODUCTION SECTION -->
-<section class="mb-12 bg-gradient-to-r from-red-50 to-yellow-50 rounded-lg shadow-lg p-6 border border-red-200">
-    <h2 class="text-2xl font-bold text-center text-red-700 mb-4">The Asian Digital Renaissance</h2>
-    
-    <div class="text-center mb-6">
-        <p class="text-gray-700 italic">"First Interactive AI+ Book Bridging Eastern Wisdom with Western Technology"</p>
-    </div>
-    
-    <div class="grid md:grid-cols-2 gap-6">
-        <div>
-            <h3 class="font-semibold text-gray-800 mb-3">Chinese-Indian Collaboration</h3>
-            <ul class="text-sm text-gray-700 space-y-2">
-                <li>• DeepSeek AI foundation with Indian philosophical inputs</li>
-                <li>• Asian "digital paints" revolutionizing global consciousness</li>
-                <li>• 5000-year wisdom traditions meeting 21st-century technology</li>
-                <li>• Each sentence valued as "million yuans" of wisdom</li>
-            </ul>
-        </div>
-        
-        <div>
-            <h3 class="font-semibold text-gray-800 mb-3">Global Impact Vision</h3>
-            <ul class="text-sm text-gray-700 space-y-2">
-                <li>• Developing African digital infrastructure</li>
-                <li>• Transforming Australian barren lands through conscious tech</li>
-                <li>• Western foundation honored while Eastern wisdom leads</li>
-                <li>• Creating non-exploitative digital ecosystems</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="mt-6 p-4 bg-white rounded-lg border">
-        <p class="text-sm text-gray-700 text-center">
-            <span class="font-semibold">The Beej Framework Universal Application:</span><br>
-            From Buddhist monasteries to Silicon Valley, from Maori meeting houses to African innovation hubs - 
-            the same principles of conscious choice create sustainable abundance.
-        </p>
-    </div>
-</section>
-
-    <!-- ADD AFTER OPENING -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <div class="bg-gradient-to-r from-green-900 to-blue-900 text-white p-8 rounded-lg mb-6">
-        <h3 class="text-2xl font-bold text-center mb-4">ACT II: THE AWAKENING WAVE</h3>
-        <p class="text-lg text-center italic">
-            "When free wisdom meets hungry minds, the marketplace of consciousness begins its revolution..."
-        </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
-            <h4 class="font-bold text-gray-800 mb-3">🇯🇵 AKIKO'S BREAKTHROUGH</h4>
-            <p class="text-gray-700 text-sm leading-relaxed">
-                "I applied the Beej framework to my game design. Instead of addiction loops, I created learning spirals. 
-                User retention dropped 40% but life satisfaction scores increased 300%. The investors don't get it, but the users are transforming."
+    <!-- Hero Section - Apple Minimalism -->
+    <section class="border-b border-[#30363d]">
+        <div class="container mx-auto px-4 py-20 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#f0f6fc] to-[#58a6ff] bg-clip-text text-transparent">
+                BA-EJ
+            </h1>
+            <p class="text-xl text-[#8b949e] mb-8 max-w-2xl mx-auto">
+                The Encyclopedia of Existential Marketplaces. 
+                <span class="text-[#58a6ff]">35+ explorations</span> of human consciousness through marketplace dynamics.
             </p>
-            <div class="mt-3 p-3 bg-white rounded border">
-                <p class="text-xs text-gray-600">Contribution: Open-sourced her "Conscious Game Design" toolkit</p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="startReading()" class="bg-[#238636] text-white px-6 py-3 rounded hover:bg-[#2ea043] transition">
+                    Start Reading Free
+                </button>
+                <a href="#explorations" class="border border-[#30363d] text-[#f0f6fc] px-6 py-3 rounded hover:border-[#58a6ff] transition">
+                    Explore Chapters
+                </a>
             </div>
         </div>
+    </section>
 
-        <div class="bg-green-50 p-6 rounded-lg border border-green-200">
-            <h4 class="font-bold text-gray-800 mb-3">🇰🇪 SAMUEL'S COMMUNITY REVIVAL</h4>
-            <p class="text-gray-700 text-sm leading-relaxed">
-                "We used the Bhaji marketplace concept to create a local skill-exchange platform. No money, just value. 
-                In 3 months, unemployment in our community dropped 28%. The World Bank is studying our model."
-            </p>
-            <div class="mt-3 p-3 bg-white rounded border">
-                <p class="text-xs text-gray-600">Contribution: Documented the "African Ubuntu Marketplace" model</p>
-            </div>
-        </div>
-
-        <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
-            <h4 class="font-bold text-gray-800 mb-3">🇺🇸 MARK'S CORPORATE REVOLUTION</h4>
-            <p class="text-gray-700 text-sm leading-relaxed">
-                "I implemented the GML metrics company-wide. We lost 60% of our addictive features and 30% of revenue initially. 
-                But our user wellbeing scores skyrocketed. Now we're attracting conscious investors at 10x valuations."
-            </p>
-            <div class="mt-3 p-3 bg-white rounded border">
-                <p class="text-xs text-gray-600">Contribution: Open-sourced the "Conscious Tech Audit" framework</p>
-            </div>
-        </div>
-
-        <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
-            <h4 class="font-bold text-gray-800 mb-3">🇧🇷 MARIA'S EDUCATIONAL AWAKENING</h4>
-            <p class="text-gray-700 text-sm leading-relaxed">
-                "As a teacher in São Paulo favelas, I used the Mudita principles in my classroom. 
-                Student violence decreased 75%, academic performance increased 200%. The education ministry is adopting our approach nationwide."
-            </p>
-            <div class="mt-3 p-3 bg-white rounded border">
-                <p class="text-xs text-gray-600">Contribution: Created "Mudita-Based Learning" curriculum</p>
-            </div>
-        </div>
-    </div>
-</section>
-    
-    
-
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 max-w-4xl">
-        <!-- Story Sections -->
-        <section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">The River and The Algorithm</h2>
+    <!-- Explorations Grid - GitHub Cards -->
+    <section id="explorations" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-2 text-center">35 Marketplaces Explored</h2>
+            <p class="text-[#8b949e] text-center mb-12">Click any exploration to read in new tab</p>
             
-            <!-- Chapter 1 -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-semibold text-blue-600 mb-4 border-b pb-2">Chapter 1: The Digital Marketplace</h3>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    In the heart of the digital world, two forces were at war: the timeless flow of human connection and the precise logic of algorithms. 
-                    Kishan, the architect, believed in systems that served humanity. Lalita, the content queen, understood what sold in the marketplace.
-                </p>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    "Your algorithms create addiction," Kishan argued. "My content gives people what they want," Lalita countered. 
-                    Between them stood Radha, trying to find the balance between wisdom and engagement.
-                </p>
-            </div>
-<!-- ADD AFTER CHAPTER 1 -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h3 class="text-2xl font-semibold text-blue-600 mb-6 border-b pb-2">The Architects of Change</h3>
-    
-    <div class="grid md:grid-cols-3 gap-6">
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span class="text-blue-600 font-bold">K</span>
-            </div>
-            <h4 class="font-bold text-gray-800">Kishan</h4>
-            <p class="text-sm text-gray-600 mt-2">The System Architect who believes in conscious algorithms</p>
-        </div>
-        
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span class="text-green-600 font-bold">R</span>
-            </div>
-            <h4 class="font-bold text-gray-800">Radha</h4>
-            <p class="text-sm text-gray-600 mt-2">The Wisdom Keeper balancing heart and technology</p>
-        </div>
-        
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-16 h-16 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span class="text-purple-600 font-bold">L</span>
-            </div>
-            <h4 class="font-bold text-gray-800">Lalita</h4>
-            <p class="text-sm text-gray-600 mt-2">The Market Realist who understands human desires</p>
-        </div>
-    </div>
-</section>
-            <!-- Chapter 2 -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-semibold text-blue-600 mb-4 border-b pb-2">Chapter 2: The Beej Framework</h3>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    Kishan developed the Beej-Bhojy-Bhaji framework to understand digital marketplaces:
-                </p>
-                <div class="grid md:grid-cols-4 gap-4 mb-6">
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <h4 class="font-bold text-blue-700 mb-2">Beej (Seed)</h4>
-                        <p class="text-sm">The core intention behind every action</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Exploration Cards -->
+                <a href="/exploration-1" target="_blank" class="github-card p-6 block">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="font-semibold text-[#f0f6fc]">1. Attention Marketplace</h3>
+                        <span class="text-[#8b949e] text-sm">↗</span>
                     </div>
-                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                        <h4 class="font-bold text-green-700 mb-2">Bhojy (Sustenance)</h4>
-                        <p class="text-sm">What people truly consume and need</p>
+                    <p class="text-[#8b949e] text-sm mb-4">How focus becomes currency in digital economy</p>
+                    <div class="flex items-center space-x-4 text-xs text-[#8b949e]">
+                        <span>📖 15 min read</span>
+                        <span>🌱 Conscious</span>
                     </div>
-                    <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                        <h4 class="font-bold text-yellow-700 mb-2">Bhaji (Cooking)</h4>
-                        <p class="text-sm">The marketplace where exchange happens</p>
+                </a>
+
+                <a href="/exploration-2" target="_blank" class="github-card p-6 block">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="font-semibold text-[#f0f6fc]">2. Intimacy Marketplace</h3>
+                        <span class="text-[#8b949e] text-sm">↗</span>
                     </div>
-                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
-                        <h4 class="font-bold text-red-700 mb-2">Bazi (Game)</h4>
-                        <p class="text-sm">The competition and its outcomes</p>
+                    <p class="text-[#8b949e] text-sm mb-4">Vulnerability, trust and emotional exchange</p>
+                    <div class="flex items-center space-x-4 text-xs text-[#8b949e]">
+                        <span>📖 12 min read</span>
+                        <span>❤️ Relational</span>
                     </div>
-                </div>
-            </div>
+                </a>
 
-<!-- REPLACE THE ENTIRE STORY CONTAINER SECTION -->
-<section id="story" class="scroll-mt-20 mt-8">
-    <div class="text-center mb-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">The Conscious Reading Experience</h2>
-        <div class="bg-green-50 border border-green-200 rounded-lg p-4 max-w-2xl mx-auto">
-            <p class="text-green-800 text-sm">
-                🌱 <strong>Eco-Mode Active:</strong> Content loads only when you're truly reading. 
-                Saves computing energy and reduces digital pollution. 
-                Consider reading in community gatherings to share resources!
-            </p>
-        </div>
-    </div>
+                <a href="/exploration-3" target="_blank" class="github-card p-6 block">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="font-semibold text-[#f0f6fc]">3. Belief Marketplace</h3>
+                        <span class="text-[#8b949e] text-sm">↗</span>
+                    </div>
+                    <p class="text-[#8b949e] text-sm mb-4">Trading ideas that shape reality</p>
+                    <div class="flex items-center space-x-4 text-xs text-[#8b949e]">
+                        <span>📖 18 min read</span>
+                        <span>🧠 Philosophical</span>
+                    </div>
+                </a>
 
-    <div class="story-container card-bg" style="max-height: 70vh;">
-        <div id="storyContent">
-            <!-- Content loads here dynamically -->
-        </div>
-        
-        <!-- Loading indicator -->
-        <div id="loadingIndicator" class="text-center py-8 hidden">
-            <div class="inline-flex items-center">
-                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600 mr-3"></div>
-                <span class="text-gray-600">Loading meaningful content...</span>
-            </div>
-        </div>
-
-        
-        <!-- End of content message -->
-        <div id="endOfContent" class="text-center py-8 hidden">
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-md mx-auto">
-                <h3 class="font-semibold text-blue-800 mb-2">Conscious Reading Complete</h3>
-                <p class="text-blue-700 text-sm mb-4">
-                    You've absorbed the available wisdom. Would you like to continue or reflect on what you've learned?
-                </p>
-                <div class="space-y-2">
-                    <button onclick="loadMoreContent()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">
-                        Load More Wisdom
-                    </button>
-                    <button onclick="showReflectionPrompt()" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">
-                        Reflect & Apply
-                    </button>
+                <!-- Add more exploration cards following same pattern -->
+                <div class="github-card p-6 text-center">
+                    <p class="text-[#8b949e] text-sm mb-3">32+ more explorations available</p>
+                    <a href="/all-explorations" target="_blank" class="text-[#58a6ff] text-sm hover:underline">
+                        View All Marketplaces →
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Reading Statistics -->
-    <div class="mt-4 text-center">
-        <div class="inline-flex space-x-6 text-sm text-gray-600">
-            <div>
-                <span class="font-semibold" id="loadedChapters">0</span> chapters loaded
-            </div>
-            <div>
-                <span class="font-semibold" id="energySaved">0</span>% energy saved
-            </div>
-            <div>
-                <span class="font-semibold" id="readingTime">0</span>min conscious reading
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- Core Framework Section -->
+    <section id="framework" class="py-20 border-t border-[#30363d]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-12 text-center">The Beej-Bhojy-Bhaji-Bazi Framework</h2>
             
-            
-<!-- ADD AFTER CHAPTER 2 -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h3 class="text-2xl font-semibold text-red-600 mb-4 border-b pb-2">The Great Debate</h3>
-    
-    <div class="space-y-4">
-        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <p class="text-blue-800 font-semibold">Kishan:</p>
-            <p class="text-gray-700">"Every algorithm we create should serve human growth, not addiction."</p>
-        </div>
-        
-        <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-            <p class="text-purple-800 font-semibold">Lalita:</p>
-            <p class="text-gray-700">"People want what feels good now. Why fight human nature?"</p>
-        </div>
-        
-        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-            <p class="text-green-800 font-semibold">Radha:</p>
-            <p class="text-gray-700">"What if we could give them what feels good now AND helps them grow tomorrow?"</p>
-        </div>
-    </div>
-</section>
-            
-            <!-- Chapter 3 -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-semibold text-blue-600 mb-4 border-b pb-2">Chapter 3: The Conscious Choice</h3>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    As the team worked together, they discovered that the most valuable marketplace wasn't about attention or money. 
-                    It was about conscious choices that created meaningful connections.
-                </p>
-                <p class="text-gray-700 leading-relaxed">
-                    "We're not just building technology," Kishan realized. "We're building the future of human interaction."
-                </p>
-            </div>
-        </section>
-
-<!-- ADD AS NEW CHAPTER BEFORE DASHBOARD -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">THE CONSCIOUS CODE: A Non-Fiction Thriller</h2>
-    
-    <div class="bg-gradient-to-r from-blue-900 to-purple-900 text-white p-8 rounded-lg mb-6">
-        <h3 class="text-2xl font-bold text-center mb-4">ACT I: THE DIGITAL HUNGER</h3>
-        <p class="text-lg text-center italic">
-            "In a world drowning in information but starving for wisdom, one book becomes the key to human evolution..."
-        </p>
-    </div>
-
-    <div class="space-y-6">
-        <div class="bg-gray-50 p-6 rounded-lg border">
-            <h4 class="font-bold text-gray-800 mb-3">SCENE: TOKYO - 3:47 AM</h4>
-            <p class="text-gray-700 leading-relaxed">
-                Akiko, a 28-year-old game developer, stares at her 14th failed startup pitch. Her screen shows plummeting user engagement metrics. 
-                "They consume everything but remember nothing," she whispers. A notification pops up: <span class="font-semibold">"The River and Algorithm - Why Your Attention Is Worth Billions"</span>.
-            </p>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-lg border">
-            <h4 class="font-bold text-gray-800 mb-3">SCENE: NAIROBI - DIGITAL HUB</h4>
-            <p class="text-gray-700 leading-relaxed">
-                Samuel, a community organizer, watches his youth center's funding get cut for the third time. "They want quick results, not real change." 
-                His phone buzzes with a message from a friend: <span class="font-semibold">"Found this crazy book talking about Beej framework - it's free but feels more valuable than my MBA."</span>
-            </p>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-lg border">
-            <h4 class="font-bold text-gray-800 mb-3">SCENE: SILICON VALLEY - BOARDROOM</h4>
-            <p class="text-gray-700 leading-relaxed">
-                CEO Mark Richardson stares at the "Suffering Index" of his social media platform hitting 89%. "We're making billions but destroying minds." 
-                His assistant slides a tablet across the table: <span class="font-semibold">"Vrindavan 2.0's GML metrics - they're achieving what we can't buy with all our VC funding."</span>
-            </p>
-        </div>
-    </div>
-</section>
-        
-        <!-- Dashboard -->
-        <section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Marketplace Analytics</h2>
-            
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-lg">
-                    <h3 class="text-lg font-semibold mb-2">Grahak Maturity Level</h3>
-                    <p class="text-3xl font-bold">3.8/5.0</p>
-                    <p class="text-blue-100 text-sm mt-2">Growing towards conscious consumption</p>
+            <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="github-card p-6 text-center">
+                    <div class="text-2xl mb-3">🌱</div>
+                    <h3 class="font-semibold mb-2">Beej</h3>
+                    <p class="text-[#8b949e] text-sm">The Seed - Core intention and beginning</p>
                 </div>
-                <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-lg">
-                    <h3 class="text-lg font-semibold mb-2">Content Impact Score</h3>
-                    <p class="text-3xl font-bold">72%</p>
-                    <p class="text-green-100 text-sm mt-2">Positive influence on users</p>
-                </div>
-            </div>
-
-            <div class="chart-container bg-gray-50 p-4 rounded-lg">
-                <canvas id="marketChart"></canvas>
-            </div>
-        </section>
-
-
-<!-- ADD AFTER GLOBAL DISCOVERY -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <div class="bg-gradient-to-r from-red-900 to-orange-900 text-white p-8 rounded-lg mb-6">
-        <h3 class="text-2xl font-bold text-center mb-4">THE PARADOX OF FREE WISDOM</h3>
-        <p class="text-lg text-center italic">
-            "What happens when something more valuable than Harry Potter is given away freely?"
-        </p>
-    </div>
-
-    <div class="bg-gray-50 p-6 rounded-lg mb-6">
-        <h4 class="font-bold text-gray-800 mb-4 text-center">The Conscious Contribution Economy</h4>
-        
-        <div class="grid md:grid-cols-3 gap-4 text-center mb-6">
-            <div class="p-4 bg-white rounded-lg border">
-                <div class="text-2xl font-bold text-green-600">$0</div>
-                <div class="text-sm text-gray-600">Cost to Access</div>
-            </div>
-            <div class="p-4 bg-white rounded-lg border">
-                <div class="text-2xl font-bold text-blue-600">$2.1B</div>
-                <div class="text-sm text-gray-600">Estimated Market Value</div>
-            </div>
-            <div class="p-4 bg-white rounded-lg border">
-                <div class="text-2xl font-bold text-purple-600">∞</div>
-                <div class="text-sm text-gray-600">Human Potential Unlocked</div>
-            </div>
-        </div>
-
-        <div class="space-y-4">
-            <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-                <p class="text-gray-700 text-sm">
-                    <span class="font-semibold">The Investor's Dilemma:</span> "I've made millions from tech IPOs, but this free book transformed my life more than any investment. 
-                    So I donated $50,000 to the open-source platform - not because I had to, but because I realized true value must be honored."
-                </p>
-            </div>
-
-            <div class="p-4 bg-green-50 rounded-lg border border-green-200">
-                <p class="text-gray-700 text-sm">
-                    <span class="font-semibold">The Student's Revelation:</span> "As a broke college student, I applied the Beej framework to my studies. 
-                    My GPA went from 2.8 to 3.9. I can't pay money, but I've translated the book into 3 languages and helped 200+ students apply it."
-                </p>
-            </div>
-
-            <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <p class="text-gray-700 text-sm">
-                    <span class="font-semibold">The Corporate Executive's Awakening:</span> "My bonus last year was $500,000. This free book helped me save my marriage and find purpose. 
-                    I'm redirecting my entire team's training budget to implement these principles. The ROI is immeasurable."
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-        
-<!-- ADD TO DASHBOARD SECTION -->
-<div class="grid md:grid-cols-4 gap-4 mt-6">
-    <div class="bg-white p-4 rounded-lg border text-center">
-        <div class="text-2xl font-bold text-blue-600">47%</div>
-        <div class="text-sm text-gray-600">Attention Quality</div>
-    </div>
-    <div class="bg-white p-4 rounded-lg border text-center">
-        <div class="text-2xl font-bold text-green-600">63%</div>
-        <div class="text-sm text-gray-600">Content Value</div>
-    </div>
-    <div class="bg-white p-4 rounded-lg border text-center">
-        <div class="text-2xl font-bold text-purple-600">28%</div>
-        <div class="text-sm text-gray-600">Addiction Index</div>
-    </div>
-    <div class="bg-white p-4 rounded-lg border text-center">
-        <div class="text-2xl font-bold text-orange-600">85%</div>
-        <div class="text-sm text-gray-600">User Growth</div>
-    </div>
-</div>
-
-<!-- ADD TO DASHBOARD SECTION -->
-<div class="mt-8 bg-white p-6 rounded-lg border">
-    <h3 class="text-xl font-semibold text-gray-800 mb-4">Global Wisdom Contributions</h3>
-    
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <div class="p-3 bg-blue-50 rounded-lg">
-            <div class="text-2xl font-bold text-blue-600" id="easternCount">0</div>
-            <div class="text-xs text-gray-600">Eastern</div>
-        </div>
-        <div class="p-3 bg-green-50 rounded-lg">
-            <div class="text-2xl font-bold text-green-600" id="abrahamicCount">0</div>
-            <div class="text-xs text-gray-600">Abrahamic</div>
-        </div>
-        <div class="p-3 bg-orange-50 rounded-lg">
-            <div class="text-2xl font-bold text-orange-600" id="indigenousCount">0</div>
-            <div class="text-xs text-gray-600">Indigenous</div>
-        </div>
-        <div class="p-3 bg-purple-50 rounded-lg">
-            <div class="text-2xl font-bold text-purple-600" id="secularCount">0</div>
-            <div class="text-xs text-gray-600">Secular</div>
-        </div>
-    </div>
-    
-    <div class="mt-4 text-center">
-        <p class="text-sm text-gray-600">Real-time wisdom tradition preferences from global users</p>
-    </div>
-</div>
-
-<script>
-// Simulated real-time updates
-function updateWisdomMetrics() {
-    document.getElementById('easternCount').textContent = Math.floor(Math.random() * 1000) + 500;
-    document.getElementById('abrahamicCount').textContent = Math.floor(Math.random() * 800) + 400;
-    document.getElementById('indigenousCount').textContent = Math.floor(Math.random() * 600) + 300;
-    document.getElementById('secularCount').textContent = Math.floor(Math.random() * 1200) + 600;
-}
-
-updateWisdomMetrics();
-setInterval(updateWisdomMetrics, 5000);
-</script>
-
-<!-- REPLACE EXISTING DASHBOARD -->
-<section id="dashboard" class="scroll-mt-20 mt-20">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Global Consciousness Impact Dashboard</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Real-time metrics showing how free wisdom is transforming human evolution across the planet</p>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-white p-4 rounded-lg shadow-md border text-center">
-            <div class="text-2xl font-bold text-green-600" id="userCount">0</div>
-            <div class="text-sm text-gray-600">Active Readers</div>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border text-center">
-            <div class="text-2xl font-bold text-blue-600" id="contributionCount">0</div>
-            <div class="text-sm text-gray-600">Contributions</div>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border text-center">
-            <div class="text-2xl font-bold text-purple-600" id="countryCount">0</div>
-            <div class="text-sm text-gray-600">Countries</div>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-md border text-center">
-            <div class="text-2xl font-bold text-orange-600" id="gmlGlobal">0</div>
-            <div class="text-sm text-gray-600">Avg GML Score</div>
-        </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Real-time Transformation Stories</h3>
-        <div id="liveStories" class="space-y-3 max-h-60 overflow-y-auto">
-            <!-- Stories will appear here dynamically -->
-        </div>
-    </div>
-
-    <div class="chart-container bg-gray-50 p-4 rounded-lg">
-        <canvas id="globalImpactChart"></canvas>
-    </div>
-</section>
-
-<script>
-// Real-time global impact simulation
-function updateGlobalMetrics() {
-    document.getElementById('userCount').textContent = (Math.random() * 10000 + 50000).toFixed(0);
-    document.getElementById('contributionCount').textContent = (Math.random() * 5000 + 15000).toFixed(0);
-    document.getElementById('countryCount').textContent = (Math.random() * 50 + 150).toFixed(0);
-    document.getElementById('gmlGlobal').textContent = (Math.random() * 0.5 + 3.2).toFixed(1);
-}
-
-function addLiveStory() {
-    const stories = [
-        "🇮🇳 Ravi from Mumbai: Applied Beej framework to his startup - revenue increased 300% while team happiness doubled",
-        "🇩🇪 Sophia from Berlin: Used Mudita principles in her relationships - transformed her entire social circle",
-        "🇺🇸 David from New York: Implemented GCL in his company - employee retention increased 85%",
-        "🇨🇳 Wei from Shanghai: Translated concepts to Chinese context - reaching millions through local platforms",
-        "🇧🇷 Isabella from Rio: Created community learning circles - reducing local violence by 40%",
-        "🇿🇦 Thando from Cape Town: Adapted framework for African contexts - creating sustainable local economies"
-    ];
-    
-    const storiesContainer = document.getElementById('liveStories');
-    const story = stories[Math.floor(Math.random() * stories.length)];
-    const storyElement = document.createElement('div');
-    storyElement.className = 'bg-blue-50 p-3 rounded border border-blue-200';
-    storyElement.innerHTML = `<p class="text-sm text-gray-700">${story}</p>`;
-    
-    storiesContainer.prepend(storyElement);
-    
-    // Keep only last 5 stories
-    if (storiesContainer.children.length > 5) {
-        storiesContainer.removeChild(storiesContainer.lastChild);
-    }
-}
-
-// Initialize charts and metrics
-document.addEventListener('DOMContentLoaded', function() {
-    updateGlobalMetrics();
-    setInterval(updateGlobalMetrics, 3000);
-    setInterval(addLiveStory, 5000);
-    
-    // Initialize global impact chart
-    const ctx = document.getElementById('globalImpactChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-            datasets: [{
-                label: 'Global GML Average',
-                data: [2.8, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5],
-                borderColor: '#10B981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                fill: true,
-                tension: 0.4
-            }, {
-                label: 'Contributions (Thousands)',
-                data: [5, 8, 12, 18, 25, 35, 50],
-                borderColor: '#3B82F6',
-                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                fill: true,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Consciousness Evolution Metrics'
-                }
-            }
-        }
-    });
-});
-</script>
-
-        
-        <!-- ADD BEFORE INTERACTIVE ELEMENTS -->
-<section class="mb-12 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg shadow-lg p-8">
-    <div class="text-center mb-8">
-        <h3 class="text-2xl font-bold mb-4">With Deep Gratitude To Our Digital Foundations</h3>
-        <p class="text-lg opacity-90">Platforms that make global wisdom sharing possible</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
-            <div class="text-3xl mb-4">🌐</div>
-            <h4 class="font-bold text-xl mb-3">Microsoft Teams & GitHub</h4>
-            <p class="opacity-90 text-sm">
-                For providing the collaborative infrastructure that allows this AI+ book to evolve through global contributions. 
-                Every commit, every discussion, every pull request adds to human consciousness.
-            </p>
-        </div>
-
-        <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
-            <div class="text-3xl mb-4">🤝</div>
-            <h4 class="font-bold text-xl mb-3">DeepSeek AI Community</h4>
-            <p class="opacity-90 text-sm">
-                For creating the AI foundation that processes millions of human insights, helping us discover patterns 
-                in consciousness evolution that no single human mind could comprehend alone.
-            </p>
-        </div>
-    </div>
-
-    <div class="mt-8 text-center">
-        <div class="bg-white bg-opacity-20 p-4 rounded-lg inline-block">
-            <p class="font-semibold">A Prayer for Conscious Contribution</p>
-            <p class="text-sm mt-2 opacity-90">
-                "May every reader who benefits from this free wisdom find their unique way to contribute back - 
-                whether through code, translations, applications, or simply living more consciously. 
-                May our collective contributions elevate human evolution beyond all current limitations."
-            </p>
-        </div>
-    </div>
-</section>
-        
-        <!-- Key Concepts -->
-        <section class="bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Core Concepts</h2>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="border-l-4 border-blue-500 pl-4">
-                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Grahakvaad</h3>
-                    <p class="text-gray-600">The philosophy of conscious consumption and contribution in digital spaces.</p>
-                </div>
-                <div class="border-l-4 border-green-500 pl-4">
-                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Mudita</h3>
-                    <p class="text-gray-600">Finding joy in others' growth and success without envy.</p>
-                </div>
-                <div class="border-l-4 border-purple-500 pl-4">
-                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Upekkha</h3>
-                    <p class="text-gray-600">Equanimity and balance in the face of marketplace fluctuations.</p>
-                </div>
-                <div class="border-l-4 border-orange-500 pl-4">
-                    <h3 class="font-semibold text-lg text-gray-800 mb-2">Infovaad</h3>
-                    <p class="text-gray-600">The science of information flow and its impact on consciousness.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-<!-- ADD AFTER CORE CONCEPTS -->
-<section class="mb-12 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg shadow-lg p-6">
-    <h3 class="text-2xl font-semibold text-gray-800 mb-6">The Four Pillars of Digital Consciousness</h3>
-    
-    <div class="space-y-4">
-        <div class="flex items-start space-x-4">
-            <div class="bg-white rounded-full p-2 shadow-sm">
-                <span class="text-blue-600 font-bold">1</span>
-            </div>
-            <div>
-                <h4 class="font-semibold text-gray-800">Intentional Design</h4>
-                <p class="text-gray-600 text-sm">Every feature should serve a conscious purpose</p>
-            </div>
-        </div>
-        
-        <div class="flex items-start space-x-4">
-            <div class="bg-white rounded-full p-2 shadow-sm">
-                <span class="text-green-600 font-bold">2</span>
-            </div>
-            <div>
-                <h4 class="font-semibold text-gray-800">Transparent Algorithms</h4>
-                <p class="text-gray-600 text-sm">Users should understand why they see what they see</p>
-            </div>
-        </div>
-        
-        <div class="flex items-start space-x-4">
-            <div class="bg-white rounded-full p-2 shadow-sm">
-                <span class="text-purple-600 font-bold">3</span>
-            </div>
-            <div>
-                <h4 class="font-semibold text-gray-800">Growth Metrics</h4>
-                <p class="text-gray-600 text-sm">Measure user development, not just engagement</p>
-            </div>
-        </div>
-        
-        <div class="flex items-start space-x-4">
-            <div class="bg-white rounded-full p-2 shadow-sm">
-                <span class="text-orange-600 font-bold">4</span>
-            </div>
-            <div>
-                <h4 class="font-semibold text-gray-800">Community Wisdom</h4>
-                <p class="text-gray-600 text-sm">Collective intelligence guides individual growth</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ADD TO CORE CONCEPTS -->
-<div class="concept-item card-bg p-6 rounded-lg shadow-md border border-gray-200" data-keywords="multi-religious universal wisdom">
-    <h3 class="text-xl font-bold text-gray-800">Universal Beej Framework Across Traditions</h3>
-    <div class="mt-4 grid md:grid-cols-4 gap-4 text-center">
-        <div class="p-3 bg-blue-50 rounded-lg">
-            <div class="font-semibold text-blue-700 text-sm">Buddhism</div>
-            <div class="text-xs text-gray-600">Upekkha → Mudita</div>
-        </div>
-        <div class="p-3 bg-green-50 rounded-lg">
-            <div class="font-semibold text-green-700 text-sm">Jainism</div>
-            <div class="text-xs text-gray-600">Samvar → Anuvrat</div>
-        </div>
-        <div class="p-3 bg-red-50 rounded-lg">
-            <div class="font-semibold text-red-700 text-sm">Islam</div>
-            <div class="text-xs text-gray-600">Tawakkul → Ihsan</div>
-        </div>
-        <div class="p-3 bg-purple-50 rounded-lg">
-            <div class="font-semibold text-purple-700 text-sm">Christianity</div>
-            <div class="text-xs text-gray-600">Agape → Kenosis</div>
-        </div>
-    </div>
-    <p class="text-gray-600 mt-4 text-sm">
-        Every wisdom tradition has its version of the Beej-Bhojy-Bhaji-Bazi framework: 
-        <span class="font-semibold">Seed intention → Nourishing practice → Community application → Transformational outcome</span>
-    </p>
-</div>
-
-    
-<!-- ADD BEFORE FOOTER -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h3 class="text-2xl font-semibold text-gray-800 mb-6">What Would You Choose?</h3>
-    
-    <div class="bg-gray-50 p-6 rounded-lg mb-6">
-        <p class="text-gray-700 mb-4">You're designing a new feature. Users spend 3x more time on addictive content but show 50% less personal growth. Do you:</p>
-        
-        <div class="space-y-3">
-            <button onclick="showResult('A')" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-blue-50 transition">
-                <span class="font-semibold">A.</span> Optimize for engagement - more time means more data
-            </button>
-            
-            <button onclick="showResult('B')" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-green-50 transition">
-                <span class="font-semibold">B.</span> Prioritize growth - build features that challenge users
-            </button>
-            
-            <button onclick="showResult('C')" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-purple-50 transition">
-                <span class="font-semibold">C.</span> Find balance - addictive content that leads to growth
-            </button>
-        </div>
-        
-        <div id="choiceResult" class="mt-4 p-4 rounded-lg hidden"></div>
-    </div>
-</section>
-
-<script>
-function showResult(choice) {
-    const results = {
-        'A': { color: 'bg-red-100 border-red-300', text: 'Lalita would agree - but is immediate engagement worth long-term user stagnation?' },
-        'B': { color: 'bg-green-100 border-green-300', text: 'Kishan approves - conscious design leads to meaningful growth!' },
-        'C': { color: 'bg-blue-100 border-blue-300', text: 'Radha smiles - the middle path often reveals the deepest wisdom.' }
-    };
-    
-    const resultDiv = document.getElementById('choiceResult');
-    resultDiv.className = `mt-4 p-4 rounded-lg border ${results[choice].color}`;
-    resultDiv.innerHTML = `<p class="font-semibold">Your Choice:</p><p>${results[choice].text}</p>`;
-    resultDiv.classList.remove('hidden');
-}
-</script>
-
-<!-- ADD AFTER STORY SECTION -->
-<section class="mb-12 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-lg p-6">
-    <div class="text-center">
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">🌍 Read Together, Save Together</h3>
-        <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
-            Join the conscious reading movement. Share this book in community gatherings, 
-            study groups, or local libraries to reduce digital consumption and enhance collective understanding.
-        </p>
-        
-        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div class="bg-white p-4 rounded-lg border text-center">
-                <div class="text-2xl mb-2">👥</div>
-                <h4 class="font-semibold text-gray-800 mb-2">Community Reading</h4>
-                <p class="text-sm text-gray-600">One device, multiple readers</p>
-                <p class="text-xs text-green-600 mt-2">Saves 80% energy per reader</p>
-            </div>
-            
-            <div class="bg-white p-4 rounded-lg border text-center">
-                <div class="text-2xl mb-2">💬</div>
-                <h4 class="font-semibold text-gray-800 mb-2">Group Discussion</h4>
-                <p class="text-sm text-gray-600">Shared insights, deeper understanding</p>
-                <p class="text-xs text-green-600 mt-2">300% more retention</p>
-            </div>
-            
-            <div class="bg-white p-4 rounded-lg border text-center">
-                <div class="text-2xl mb-2">🌱</div>
-                <h4 class="font-semibold text-gray-800 mb-2">Digital Minimalism</h4>
-                <p class="text-sm text-gray-600">Load only what you need</p>
-                <p class="text-xs text-green-600 mt-2">Reduces CO2 emissions</p>
-            </div>
-        </div>
-        
-        <div class="mt-6">
-            <button onclick="showCommunityResources()" class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition">
-                Get Community Reading Resources
-            </button>
-        </div>
-    </div>
-</section>
-
-<script>
-function showCommunityResources() {
-    const resources = `
-        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div class="bg-white rounded-lg p-6 max-w-md mx-4 max-h-90vh overflow-y-auto">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Community Reading Resources</h3>
                 
-                <div class="space-y-4">
-                    <div class="border rounded-lg p-4">
-                        <h4 class="font-semibold text-gray-800 mb-2">📚 Discussion Guides</h4>
-                        <p class="text-sm text-gray-600">Structured questions for group conversations</p>
-                    </div>
-                    
-                    <div class="border rounded-lg p-4">
-                        <h4 class="font-semibold text-gray-800 mb-2">🌐 Local Reading Circles</h4>
-                        <p class="text-sm text-gray-600">Find or start groups in your area</p>
-                    </div>
-                    
-                    <div class="border rounded-lg p-4">
-                        <h4 class="font-semibold text-gray-800 mb-2">💻 Digital Sharing Tools</h4>
-                        <p class="text-sm text-gray-600">Tools for collaborative reading sessions</p>
+                <div class="github-card p-6 text-center">
+                    <div class="text-2xl mb-3">🍚</div>
+                    <h3 class="font-semibold mb-2">Bhojy</h3>
+                    <p class="text-[#8b949e] text-sm">Sustenance - What's being traded</p>
+                </div>
+                
+                <div class="github-card p-6 text-center">
+                    <div class="text-2xl mb-3">🥘</div>
+                    <h3 class="font-semibold mb-2">Bhaji</h3>
+                    <p class="text-[#8b949e] text-sm">Cooking - Marketplace dynamics</p>
+                </div>
+                
+                <div class="github-card p-6 text-center">
+                    <div class="text-2xl mb-3">🎯</div>
+                    <h3 class="font-semibold mb-2">Bazi</h3>
+                    <p class="text-[#8b949e] text-sm">Game - Outcomes and evolution</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section - Minimal Charts -->
+    <section id="metrics" class="py-20 border-t border-[#30363d]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-12 text-center">Global Impact Metrics</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="github-card p-6">
+                    <h3 class="font-semibold mb-4">Consciousness Evolution</h3>
+                    <div class="minimal-chart">
+                        <canvas id="gmlChart" height="200"></canvas>
                     </div>
                 </div>
                 
-                <div class="mt-6 text-center">
-                    <button onclick="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
-                        Close
-                    </button>
+                <div class="github-card p-6">
+                    <h3 class="font-semibold mb-4">Resource Optimization</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Data Saved</span>
+                                <span>87%</span>
+                            </div>
+                            <div class="w-full bg-[#30363d] rounded-full h-2">
+                                <div class="bg-[#238636] h-2 rounded-full" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Energy Efficiency</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="w-full bg-[#30363d] rounded-full h-2">
+                                <div class="bg-[#58a6ff] h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    `;
-    
-    document.body.insertAdjacentHTML('beforeend', resources);
-}
+    </section>
 
-function closeModal() {
-    const modal = document.querySelector('.fixed.inset-0');
-    if (modal) {
-        modal.remove();
-    }
-}
-</script>
-
-    
-    <!-- ADD AFTER CHAPTER 3 -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h3 class="text-2xl font-semibold text-blue-600 mb-6 border-b pb-2">The Wisdom Collective Emerges</h3>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-12 h-12 bg-orange-100 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <span class="text-orange-600 font-bold text-sm">BF</span>
-            </div>
-            <h4 class="font-bold text-gray-800 text-sm">Bhajan Fal</h4>
-            <p class="text-xs text-gray-600 mt-1">Devotional Algorithm Designer</p>
-        </div>
-        
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-12 h-12 bg-pink-100 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <span class="text-pink-600 font-bold text-sm">G</span>
-            </div>
-            <h4 class="font-bold text-gray-800 text-sm">Gunjan</h4>
-            <p class="text-xs text-gray-600 mt-1">Vibrational Frequency Analyst</p>
-        </div>
-        
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-12 h-12 bg-green-100 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <span class="text-green-600 font-bold text-sm">P</span>
-            </div>
-            <h4 class="font-bold text-gray-800 text-sm">Prarthana</h4>
-            <p class="text-xs text-gray-600 mt-1">Prayer & Intention Scientist</p>
-        </div>
-        
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-12 h-12 bg-purple-100 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <span class="text-purple-600 font-bold text-sm">P</span>
-            </div>
-            <h4 class="font-bold text-gray-800 text-sm">Prerna</h4>
-            <p class="text-xs text-gray-600 mt-1">Inspiration Flow Manager</p>
-        </div>
-        
-        <div class="text-center p-4 border rounded-lg hover:shadow-md transition">
-            <div class="w-12 h-12 bg-red-100 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <span class="text-red-600 font-bold text-sm">R</span>
-            </div>
-            <h4 class="font-bold text-gray-800 text-sm">Romramputer</h4>
-            <p class="text-xs text-gray-600 mt-1">Ancient-Future Tech Bridge</p>
-        </div>
-    </div>
-
-    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
-        <h4 class="font-semibold text-gray-800 mb-3">The Global Wisdom Integration</h4>
-        <p class="text-gray-700 text-sm leading-relaxed">
-            As the team expanded, they discovered that the Beej framework resonated across all wisdom traditions:
-            <span class="font-semibold">Buddhist Upekkha</span> (equanimity), 
-            <span class="font-semibold">Jain Samvar</span> (conscious restraint), 
-            <span class="font-semibold">Islamic Tawakkul</span> (trust in divine wisdom), 
-            <span class="font-semibold">Christian purification</span>, 
-            <span class="font-semibold">Zoroastrian sacred fire</span>, and 
-            <span class="font-semibold">Maori whakapapa</span> (interconnectedness) - all pointing to the same truth: conscious choice creates reality.
-        </p>
-    </div>
-</section>
-
-    <!-- ADD AS NEW CHAPTER -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h3 class="text-2xl font-semibold text-green-600 mb-4 border-b pb-2">Exploration 3: The Global Wisdom Marketplace</h3>
-    
-    <p class="text-gray-700 mb-4 leading-relaxed">
-        Bhajan Fal entered the data-hut with a gentle smile. "I've been studying devotional algorithms," he said. 
-        "The same pattern appears in every tradition - bhajans, hymns, prayers - they all create coherent heart frequencies that neutralize anxiety protocols."
-    </p>
-    
-    <p class="text-gray-700 mb-4 leading-relaxed">
-        Gunjan displayed her vibrational analysis: "When people experience <span class="font-semibold">Mudita</span>, their brainwaves synchronize at 528Hz - the exact frequency that repairs DNA. This isn't metaphor; it's physics."
-    </p>
-    
-    <div class="bg-yellow-50 p-4 rounded-lg my-4 border-l-4 border-yellow-400">
-        <p class="text-sm text-gray-700">
-            <span class="font-semibold">Prarthana's Discovery:</span> "Sincere prayer creates measurable intention fields that influence random number generators. Our thoughts literally shape reality."
-        </p>
-    </div>
-    
-    <p class="text-gray-700 mb-4 leading-relaxed">
-        Prerna added: "Inspiration follows the same flow patterns as water. Block it, and it stagnates. Allow it to move freely, and it nourishes everything it touches."
-    </p>
-    
-    <p class="text-gray-700 leading-relaxed">
-        Romramputer, connecting ancient Vedic computing with quantum systems, concluded: "All wisdom traditions are different algorithms solving the same equation: 
-        <span class="font-semibold">How does consciousness create reality through choice?</span>"
-    </p>
-</section>
-
-<!-- ADD TO GRATITUDE SECTION -->
-<div class="mt-6 bg-white bg-opacity-20 p-4 rounded-lg">
-    <h4 class="font-semibold mb-2">GitHub Pages Optimization</h4>
-    <p class="text-sm opacity-90">
-        This book uses GitHub's free hosting efficiently through lazy loading. 
-        Only essential content is transferred, reducing server load and making wisdom accessible 
-        to everyone regardless of internet speed or device capability.
-    </p>
-    <p class="text-xs opacity-75 mt-2">
-        💚 Each conscious reading session saves approximately 2.1MB of data transfer compared to traditional loading.
-    </p>
-</div>
-
-    
-    <!-- ADD BEFORE FOOTER -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h3 class="text-2xl font-semibold text-purple-600 mb-6">Your Wisdom Contribution</h3>
-    
-    <div class="bg-gray-50 p-6 rounded-lg">
-        <p class="text-gray-700 mb-4 text-center">What wisdom tradition most resonates with your approach to life?</p>
-        
-        <div class="grid md:grid-cols-3 gap-4 mb-6">
-            <button onclick="recordWisdomChoice('eastern')" class="p-4 bg-white border rounded-lg hover:bg-blue-50 transition text-center">
-                <span class="block font-semibold text-blue-600">Eastern Traditions</span>
-                <span class="text-xs text-gray-600">Buddhism, Hinduism, Taoism</span>
-            </button>
-            
-            <button onclick="recordWisdomChoice('abrahamic')" class="p-4 bg-white border rounded-lg hover:bg-green-50 transition text-center">
-                <span class="block font-semibold text-green-600">Abrahamic Faiths</span>
-                <span class="text-xs text-gray-600">Islam, Christianity, Judaism</span>
-            </button>
-            
-            <button onclick="recordWisdomChoice('indigenous')" class="p-4 bg-white border rounded-lg hover:bg-orange-50 transition text-center">
-                <span class="block font-semibold text-orange-600">Indigenous Wisdom</span>
-                <span class="text-xs text-gray-600">Maori, Native, Earth-based</span>
-            </button>
-        </div>
-        
-        <div class="text-center">
-            <button onclick="recordWisdomChoice('secular')" class="p-4 bg-white border rounded-lg hover:bg-purple-50 transition text-center w-full md:w-auto">
-                <span class="block font-semibold text-purple-600">Secular Humanism</span>
-                <span class="text-xs text-gray-600">Science, Reason, Compassion</span>
-            </button>
-        </div>
-        
-        <div id="wisdomResult" class="mt-6 p-4 rounded-lg hidden text-center"></div>
-    </div>
-</section>
-
-<script>
-let userWisdomChoices = [];
-
-function recordWisdomChoice(tradition) {
-    userWisdomChoices.push(tradition);
-    const resultDiv = document.getElementById('wisdomResult');
-    
-    const messages = {
-        'eastern': '🕉️ The Middle Path recognizes your choice - detachment with compassion leads to true freedom.',
-        'abrahamic': '✡️🕋✝️ The Abrahamic traditions honor your faith - surrender to higher wisdom brings peace.',
-        'indigenous': '🌍 Earth wisdom acknowledges your connection - all life is sacred and interrelated.',
-        'secular': '🔬 Reason celebrates your choice - evidence and compassion guide the way forward.'
-    };
-    
-    resultDiv.innerHTML = `
-        <p class="font-semibold mb-2">Thank you for sharing your wisdom path!</p>
-        <p class="text-gray-700">${messages[tradition]}</p>
-        <p class="text-sm text-gray-600 mt-2">Your contribution helps build the global wisdom matrix.</p>
-    `;
-    resultDiv.classList.remove('hidden');
-    
-    // Send to analytics (simulated)
-    console.log('User wisdom choice:', tradition);
-}
-</script>
-
-    <!-- ADD AS FINAL INTERACTIVE SECTION -->
-<section class="mb-12 bg-white rounded-lg shadow-lg p-6">
-    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Your Role in Human Evolution</h2>
-    
-    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg mb-6">
-        <p class="text-center text-gray-700 mb-4">
-            This book is free, but your contribution is priceless. How will you help evolve human consciousness?
-        </p>
-        
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white p-4 rounded-lg border text-center">
-                <h4 class="font-semibold text-gray-800 mb-3">For Those With Financial Capacity</h4>
-                <p class="text-sm text-gray-600 mb-3">Consider supporting the platforms that make this possible:</p>
-                <ul class="text-xs text-gray-600 space-y-1 text-left">
-                    <li>• Donate to open-source AI research</li>
-                    <li>• Support digital infrastructure projects</li>
-                    <li>• Fund translations for underserved languages</li>
-                    <li>• Sponsor access for communities in need</li>
-                </ul>
-            </div>
-            
-            <div class="bg-white p-4 rounded-lg border text-center">
-                <h4 class="font-semibold text-gray-800 mb-3">For Everyone</h4>
-                <p class="text-sm text-gray-600 mb-3">Your non-financial contributions matter equally:</p>
-                <ul class="text-xs text-gray-600 space-y-1 text-left">
-                    <li>• Apply these principles in your life</li>
-                    <li>• Share your experiences and learnings</li>
-                    <li>• Help others understand these concepts</li>
-                    <li>• Live more consciously every day</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-center">
-        <button onclick="showContributionPromise()" class="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 transition">
-            Make My Contribution Promise
-        </button>
-        
-        <div id="contributionPromise" class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200 hidden">
-            <p class="text-gray-700 text-center">
-                <span class="font-semibold">Thank you for your commitment to human evolution!</span><br>
-                Your promise has been recorded in the global consciousness ledger. 
-                Remember: Small, consistent contributions create massive collective change.
-            </p>
-        </div>
-    </div>
-</section>
-
-<script>
-function showContributionPromise() {
-    const promiseDiv = document.getElementById('contributionPromise');
-    promiseDiv.classList.remove('hidden');
-    
-    // Record the commitment (simulated)
-    console.log('User made contribution commitment at:', new Date().toISOString());
-    
-    // Show appreciation message
-    setTimeout(() => {
-        alert('🌍 Thank you! Your commitment to conscious contribution has been added to the global matrix. Together, we evolve.');
-    }, 1000);
-}
-</script>
-    
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
+    <!-- Contribution Section -->
+    <section id="contribute" class="py-20 border-t border-[#30363d]">
         <div class="container mx-auto px-4 text-center">
-            <p class="mb-4">The River and The Algorithm - Exploring Conscious Digital Marketplaces</p>
-            <p class="text-gray-400 text-sm">Available in multiple languages through Google Translate</p>
+            <h2 class="text-2xl font-bold mb-4">Open Source Wisdom</h2>
+            <p class="text-[#8b949e] mb-8 max-w-2xl mx-auto">
+                This AI+ book evolves through community contributions. Every insight, translation, or application adds to collective consciousness.
+            </p>
+            
+            <div class="flex justify-center space-x-4">
+                <a href="https://github.com/your-repo" target="_blank" class="github-card px-6 py-3 flex items-center space-x-2 hover:border-[#58a6ff] transition">
+                    <i class="fab fa-github"></i>
+                    <span>Contribute on GitHub</span>
+                </a>
+                <a href="/contribution-guide" target="_blank" class="border border-[#30363d] text-[#f0f6fc] px-6 py-3 rounded hover:border-[#58a6ff] transition">
+                    How to Contribute
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#30363d] py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 text-sm">
+                <div>
+                    <h3 class="font-semibold mb-4">BA-EJ</h3>
+                    <p class="text-[#8b949e]">The Encyclopedia of Existential Marketplaces</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Explore</h3>
+                    <ul class="space-y-2 text-[#8b949e]">
+                        <li><a href="/all-explorations" target="_blank" class="hover:text-[#58a6ff] transition">All Marketplaces</a></li>
+                        <li><a href="/framework" target="_blank" class="hover:text-[#58a6ff] transition">Core Framework</a></li>
+                        <li><a href="/research" target="_blank" class="hover:text-[#58a6ff] transition">Research Papers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Contribute</h3>
+                    <ul class="space-y-2 text-[#8b949e]">
+                        <li><a href="https://github.com/your-repo" target="_blank" class="hover:text-[#58a6ff] transition">GitHub Repository</a></li>
+                        <li><a href="/translations" target="_blank" class="hover:text-[#58a6ff] transition">Translation Guide</a></li>
+                        <li><a href="/community" target="_blank" class="hover:text-[#58a6ff] transition">Community</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-3">
+                        <a href="#" class="icon-button w-8 h-8 rounded flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="icon-button w-8 h-8 rounded flex items-center justify-center">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="icon-button w-8 h-8 rounded flex items-center justify-center">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-[#30363d] mt-8 pt-8 text-center text-[#8b949e] text-sm">
+                <p>© 2024 BA-EJ Project. Open source wisdom for conscious evolution.</p>
+            </div>
         </div>
     </footer>
 
-    
+    <!-- Minimal JavaScript -->
     <script>
-        // Simple Chart
-        const ctx = document.getElementById('marketChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Conscious Content Engagement',
-                    data: [30, 45, 52, 61, 68, 72],
-                    borderColor: '#3B82F6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    fill: true,
-                    tension: 0.4
-                }, {
-                    label: 'Addictive Content Engagement',
-                    data: [85, 78, 72, 65, 58, 52],
-                    borderColor: '#EF4444',
-                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Marketplace Engagement Trends'
+        // Simple chart initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // GML Chart
+            const gmlCtx = document.getElementById('gmlChart').getContext('2d');
+            new Chart(gmlCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Global Maturity Level',
+                        data: [2.8, 3.1, 3.4, 3.7],
+                        borderColor: '#58a6ff',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointBackgroundColor: '#58a6ff',
+                        pointBorderColor: '#0d1117',
+                        pointBorderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: { color: '#30363d' },
+                            ticks: { color: '#8b949e' }
+                        },
+                        x: {
+                            grid: { color: '#30363d' },
+                            ticks: { color: '#8b949e' }
+                        }
                     }
                 }
-            }
+            });
         });
 
-        // Auto-translate content when language changes
-        function listenForTranslation() {
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                        // Content has been translated
-                        console.log('Content translated');
-                    }
-                });
-            });
-            
-            observer.observe(document.body, {
-                attributes: true,
-                attributeFilter: ['class']
-            });
+        function startReading() {
+            // Open first exploration in new tab
+            window.open('/exploration-1', '_blank');
         }
 
-        document.addEventListener('DOMContentLoaded', listenForTranslation);
+        // Google Analytics (if added later)
+        // Google AdSense is included via meta tag
     </script>
 </body>
 </html>
