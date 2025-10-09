@@ -77,6 +77,13 @@
   </div>
 </section>
 
+<!-- Top Contributors (Auto-Fetch from GitHub) -->
+<div id="contributors" class="mt-10">
+  <h3 class="font-semibold text-xl mb-4 text-[#f0f6fc]">Top Contributors</h3>
+  <div id="contributors-list" class="flex justify-center flex-wrap gap-6"></div>
+</div>
+
+  
 <section id="contribute" class="py-20 border-t border-[#30363d] text-center">
   <h2 class="text-2xl font-bold mb-4">Contribute & Collaborate</h2>
   <p class="text-[#8b949e] mb-8 max-w-2xl mx-auto">
@@ -99,6 +106,32 @@
   </div>
 </section>
 
+<script>
+  // Fetch top 3 contributors dynamically from GitHub API
+  fetch("https://api.github.com/repos/krishnaheda/ba-ej/contributors")
+    .then(res => res.json())
+    .then(data => {
+      const topContributors = data.slice(0, 3); // show only top 3
+      const container = document.getElementById("contributors-list");
+      
+      topContributors.forEach(contributor => {
+        const card = document.createElement("a");
+        card.href = contributor.html_url;
+        card.target = "_blank";
+        card.className = "github-card p-4 flex flex-col items-center w-32 hover:border-[#58a6ff] transition";
+        
+        card.innerHTML = `
+          <img src="${contributor.avatar_url}" alt="${contributor.login}" class="w-16 h-16 rounded-full mb-3">
+          <span class="text-sm text-[#f0f6fc]">${contributor.login}</span>
+          <span class="text-xs text-[#8b949e]">${contributor.contributions} commits</span>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Error fetching contributors:", err));
+</script>
+
+  
 <footer class="border-t border-[#30363d] py-8 text-center text-sm text-[#8b949e]">
   © 2024 BA-EJ Project · <a href="https://github.com/krishnaheda/ba-ej" class="text-[#58a6ff] hover:underline">krishnaheda/ba-ej</a>
 </footer>
