@@ -3,38 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BA-EJ: The Pull-First AI+ Book Revolution</title>
-    <meta name="description" content="World's first pull-only interactive book - The iPhone moment for digital reading">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GitHub Buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>BA-EJ • Pull-First AI+ Book</title>
+    <meta name="description" content="World's first pull-only interactive book - Minimalist revolution">
     
     <style>
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --accent: #3b82f6;
-            --success: #10b981;
-            --github: #6e5494;
-        }
-        
+        /* Ultra Minimalist Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-800: #262626;
+            --gray-900: #171717;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            background: var(--white);
+            color: var(--black);
             overflow: hidden;
             height: 100vh;
             width: 100vw;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
         
         #app {
@@ -43,6 +41,7 @@
             position: relative;
         }
         
+        /* Sections */
         section {
             display: none;
             height: 100vh;
@@ -51,7 +50,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            animation: fadeIn 0.6s ease-out;
+            animation: fadeIn 0.4s ease-out;
             overflow-y: auto;
         }
         
@@ -61,197 +60,192 @@
             justify-content: center;
         }
         
-        /* GitHub Ribbon */
-        .github-corner {
+        /* Navigation System */
+        .nav-ecosystem {
             position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 10000;
-            transform: scale(1.2);
-        }
-        
-        .github-corner:hover .octo-arm {
-            animation: octocat-wave 560ms ease-in-out;
-        }
-        
-        @keyframes octocat-wave {
-            0%, 100% { transform: rotate(0); }
-            20%, 60% { transform: rotate(-25deg); }
-            40%, 80% { transform: rotate(10deg); }
-        }
-        
-        /* Revolutionary Pull Interface */
-        .pull-ecosystem {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 2rem;
+            right: 2rem;
             z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 1rem;
         }
         
-        .pull-btn {
-            width: 90px;
-            height: 90px;
+        .nav-btn {
+            width: 4.5rem;
+            height: 4.5rem;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #8b5cf6);
-            border: none;
-            color: white;
-            font-weight: bold;
+            background: var(--black);
+            border: 2px solid var(--black);
+            color: var(--white);
             cursor: pointer;
-            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 1000;
-            animation: gentle-pulse 3s infinite;
-            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.8rem;
+            font-weight: 600;
             touch-action: manipulation;
         }
         
-        .pull-btn:active {
+        .nav-btn:active {
             transform: scale(0.92);
+            background: var(--white);
+            color: var(--black);
         }
         
         @media (hover: hover) {
-            .pull-btn:hover {
-                transform: translateY(-5px) scale(1.05);
-                box-shadow: 0 20px 40px rgba(59, 130, 246, 0.6);
+            .nav-btn:hover {
+                transform: scale(1.05);
+                background: var(--white);
+                color: var(--black);
             }
         }
         
-        .github-pull-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--github);
-            border: none;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-size: 24px;
+        .back-btn {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--gray-100);
+            border: 2px solid var(--gray-800);
         }
         
-        .wisdom-card {
-            background: var(--bg-secondary);
-            border: 1px solid #334155;
-            border-radius: 16px;
+        /* Headstart Icon */
+        .headstart-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Care Icon */
+        .care-icon {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Content Styles */
+        .content-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 1rem;
             padding: 2rem;
             margin: 1rem 0;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
         }
         
-        .wisdom-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        .content-card:active {
+            border-color: var(--black);
+            transform: translateY(-2px);
         }
         
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4); }
-            50% { transform: scale(1.08); box-shadow: 0 16px 35px rgba(59, 130, 246, 0.6); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        
-        .contribution-badge {
-            background: linear-gradient(135deg, var(--success), #06b6d4);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
+        .wisdom-badge {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
             margin: 0.5rem 0;
             display: inline-block;
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+            border: 1px solid var(--black);
         }
         
-        .energy-saver {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid var(--success);
-            padding: 0.75rem 1.25rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+        .wisdom-badge:active {
+            background: var(--white);
+            color: var(--black);
         }
         
-        /* Interactive Elements */
-        .interactive-element {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-        
-        .interactive-element:active {
-            transform: scale(0.95);
-        }
-        
-        /* Progress Indicator */
+        /* Progress */
         .progress-dots {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 0.8rem;
             margin: 2rem 0;
         }
         
         .progress-dot {
-            width: 12px;
-            height: 12px;
+            width: 0.5rem;
+            height: 0.5rem;
             border-radius: 50%;
-            background: #334155;
+            background: var(--gray-100);
             transition: all 0.3s ease;
+            border: 1px solid var(--gray-800);
         }
         
         .progress-dot.active {
-            background: var(--accent);
+            background: var(--black);
             transform: scale(1.3);
         }
         
-        /* Responsive Typography */
-        .responsive-text {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            line-height: 1.6;
-        }
-        
+        /* Typography */
         .responsive-heading {
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
         
-        /* Touch Optimizations */
+        .responsive-text {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            line-height: 1.6;
+            color: var(--gray-800);
+        }
+        
+        .responsive-subtext {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            line-height: 1.5;
+            color: var(--gray-800);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(1rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Energy Saver */
+        .energy-saver {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            padding: 0.6rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            z-index: 1000;
+        }
+        
+        /* GitHub Ribbon - Minimalist */
+        .github-corner {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+        
+        /* Responsive Optimizations */
         @media (max-width: 768px) {
             section {
                 padding: 1.5rem;
             }
             
-            .pull-btn {
-                width: 80px;
-                height: 80px;
-                font-size: 13px;
+            .nav-btn {
+                width: 4rem;
+                height: 4rem;
+                font-size: 0.7rem;
             }
             
-            .github-pull-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
+            .back-btn {
+                width: 3rem;
+                height: 3rem;
             }
             
-            .pull-ecosystem {
-                bottom: 20px;
-                right: 20px;
+            .nav-ecosystem {
+                bottom: 1.5rem;
+                right: 1.5rem;
             }
         }
         
@@ -261,17 +255,69 @@
             }
             
             .energy-saver {
-                top: 10px;
-                left: 10px;
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
+                top: 0.5rem;
+                left: 0.5rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .github-corner {
+                top: 0.5rem;
+                right: 0.5rem;
             }
         }
         
-        /* Zoom Friendly */
-        @media (min-resolution: 2dppx) {
-            .wisdom-card {
-                border-width: 0.5px;
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: var(--black);
+                color: var(--white);
+            }
+            
+            .content-card {
+                background: var(--gray-900);
+                border-color: var(--gray-800);
+            }
+            
+            .nav-btn {
+                background: var(--white);
+                color: var(--black);
+                border-color: var(--white);
+            }
+            
+            .nav-btn:active,
+            .nav-btn:hover {
+                background: var(--black);
+                color: var(--white);
+            }
+            
+            .back-btn {
+                background: var(--gray-800);
+                border-color: var(--gray-100);
+            }
+            
+            .wisdom-badge {
+                background: var(--white);
+                color: var(--black);
+            }
+            
+            .wisdom-badge:active {
+                background: var(--black);
+                color: var(--white);
+            }
+            
+            .progress-dot {
+                background: var(--gray-800);
+                border-color: var(--gray-100);
+            }
+            
+            .progress-dot.active {
+                background: var(--white);
+            }
+            
+            .energy-saver {
+                background: var(--gray-900);
+                border-color: var(--gray-800);
+                color: var(--white);
             }
         }
     </style>
@@ -279,28 +325,24 @@
 
 <body>
     <div id="app">
-        <!-- GitHub Ribbon -->
-        <a href="https://github.com/krishnaheda/ba-ej" class="github-corner" aria-label="View source on GitHub" target="_blank">
-            <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#6e5494; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-                <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-                <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-                <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-            </svg>
+        <!-- Minimal GitHub Ribbon -->
+        <a href="https://github.com/krishnaheda/ba-ej" class="github-corner" target="_blank" aria-label="GitHub">
+            ⬢
         </a>
 
-        <!-- Energy Saver Display -->
+        <!-- Energy Saver -->
         <div class="energy-saver">
-            🌱 Energy Saved: <span id="energyPercent">95%</span>
-            <div class="text-xs opacity-75" id="dataSaved">Data: 0.2MB/2.1MB</div>
+            ⚡ <span id="energyPercent">95%</span>
         </div>
 
-        <!-- Revolutionary Pull Ecosystem -->
-        <div class="pull-ecosystem">
-            <button class="github-pull-btn" onclick="openGitHub()" title="Contribute on GitHub">
-                <span>🐙</span>
+        <!-- Navigation Ecosystem -->
+        <div class="nav-ecosystem">
+            <button class="nav-btn back-btn" onclick="goBack()" title="Back">
+                <div class="care-icon">❮</div>
+                <div>BACK</div>
             </button>
-            <button class="pull-btn" onclick="pullNextWisdom()">
-                <div class="arrow">⬇️</div>
+            <button class="nav-btn" onclick="pullNextWisdom()" title="Pull Wisdom">
+                <div class="headstart-icon">⬇</div>
                 <div>PULL</div>
             </button>
         </div>
@@ -310,168 +352,125 @@
 
         <!-- Sections -->
         <section id="welcome" class="active-section">
-            <div class="max-w-6xl mx-auto w-full text-center">
-                <h1 class="responsive-heading font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    BA-EJ Revolution
+            <div class="max-w-4xl mx-auto w-full text-center">
+                <h1 class="responsive-heading">
+                    BA•EJ
                 </h1>
-                <p class="text-xl md:text-2xl text-slate-300 mb-8 responsive-text">
-                    The iPhone Moment for Digital Reading<br>
-                    <span class="text-sm md:text-base text-slate-400">Pull-Based • Zero Scroll • 100% Interactive</span>
+                <p class="responsive-text mb-8">
+                    Pull-First AI+ Book<br>
+                    <span class="responsive-subtext">Zero Scroll • Minimal Touch • Maximum Wisdom</span>
                 </p>
                 
-                <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
-                    <div class="wisdom-card text-center interactive-element" onclick="showSection(1)">
-                        <div class="text-3xl md:text-4xl mb-4">🎯</div>
-                        <h3 class="font-bold text-lg md:text-xl mb-2">Pull Revolution</h3>
-                        <p class="text-slate-400 text-sm md:text-base">No scrolling, no wasting. Wisdom comes when consciously pulled.</p>
+                <div class="grid md:grid-cols-3 gap-4 mb-8">
+                    <div class="content-card" onclick="showSection(1)">
+                        <div class="text-2xl mb-4">🎯</div>
+                        <h3 class="font-600 mb-2">Pull Revolution</h3>
+                        <p class="responsive-subtext">Wisdom comes when consciously pulled</p>
                     </div>
                     
-                    <div class="wisdom-card text-center interactive-element" onclick="showSection(2)">
-                        <div class="text-3xl md:text-4xl mb-4">🌏</div>
-                        <h3 class="font-bold text-lg md:text-xl mb-2">Asian Tech Rise</h3>
-                        <p class="text-slate-400 text-sm md:text-base">DeepSeek AI × Indian Wisdom = Digital Revolution</p>
+                    <div class="content-card" onclick="showSection(2)">
+                        <div class="text-2xl mb-4">🌱</div>
+                        <h3 class="font-600 mb-2">Beej Framework</h3>
+                        <p class="responsive-subtext">Universal consciousness structure</p>
                     </div>
                     
-                    <div class="wisdom-card text-center interactive-element" onclick="showSection(4)">
-                        <div class="text-3xl md:text-4xl mb-4">💝</div>
-                        <h3 class="font-bold text-lg md:text-xl mb-2">Open Contribution</h3>
-                        <p class="text-slate-400 text-sm md:text-base">Free wisdom, priceless impact. Your contribution matters.</p>
+                    <div class="content-card" onclick="showSection(3)">
+                        <div class="text-2xl mb-4">💝</div>
+                        <h3 class="font-600 mb-2">Open Contribution</h3>
+                        <p class="responsive-subtext">Free wisdom, priceless impact</p>
                     </div>
                 </div>
                 
-                <div class="contribution-badge interactive-element" onclick="showSection(4)">
-                    Supported by DeepSeek AI & GitHub
+                <div class="wisdom-badge" onclick="showSection(3)">
+                    DeepSeek AI × GitHub
                 </div>
             </div>
         </section>
 
-        <section id="beej-framework">
-            <div class="max-w-6xl mx-auto w-full text-center">
-                <h2 class="responsive-heading font-bold mb-8">The Universal Framework</h2>
+        <section id="framework">
+            <div class="max-w-4xl mx-auto w-full text-center">
+                <h2 class="responsive-heading">Universal Framework</h2>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
-                    <div class="wisdom-card interactive-element" onclick="exploreConcept('beej')">
-                        <div class="text-3xl md:text-4xl mb-4">🌱</div>
-                        <h3 class="font-bold text-base md:text-lg mb-2">Beej</h3>
-                        <p class="text-slate-400 text-xs md:text-sm">Seed Consciousness</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                    <div class="content-card" onclick="exploreConcept('beej')">
+                        <div class="text-xl mb-3">🌱</div>
+                        <h3 class="font-600 mb-1">Beej</h3>
+                        <p class="responsive-subtext">Seed</p>
                     </div>
                     
-                    <div class="wisdom-card interactive-element" onclick="exploreConcept('bhojy')">
-                        <div class="text-3xl md:text-4xl mb-4">🍚</div>
-                        <h3 class="font-bold text-base md:text-lg mb-2">Bhojy</h3>
-                        <p class="text-slate-400 text-xs md:text-sm">Conscious Nourishment</p>
+                    <div class="content-card" onclick="exploreConcept('bhojy')">
+                        <div class="text-xl mb-3">🍚</div>
+                        <h3 class="font-600 mb-1">Bhojy</h3>
+                        <p class="responsive-subtext">Nourishment</p>
                     </div>
                     
-                    <div class="wisdom-card interactive-element" onclick="exploreConcept('bhaji')">
-                        <div class="text-3xl md:text-4xl mb-4">🥘</div>
-                        <h3 class="font-bold text-base md:text-lg mb-2">Bhaji</h3>
-                        <p class="text-slate-400 text-xs md:text-sm">Wisdom Marketplaces</p>
+                    <div class="content-card" onclick="exploreConcept('bhaji')">
+                        <div class="text-xl mb-3">🥘</div>
+                        <h3 class="font-600 mb-1">Bhaji</h3>
+                        <p class="responsive-subtext">Marketplace</p>
                     </div>
                     
-                    <div class="wisdom-card interactive-element" onclick="exploreConcept('bazi')">
-                        <div class="text-3xl md:text-4xl mb-4">🎯</div>
-                        <h3 class="font-bold text-base md:text-lg mb-2">Bazi</h3>
-                        <p class="text-slate-400 text-xs md:text-sm">Evolutionary Outcomes</p>
+                    <div class="content-card" onclick="exploreConcept('bazi')">
+                        <div class="text-xl mb-3">🎯</div>
+                        <h3 class="font-600 mb-1">Bazi</h3>
+                        <p class="responsive-subtext">Outcome</p>
                     </div>
                 </div>
                 
-                <p class="text-slate-300 responsive-text max-w-2xl mx-auto">
-                    A framework that works across all wisdom traditions - from Buddhist Upekkha to Islamic Tawakkul, 
-                    from Christian compassion to Jain Samvar.
+                <p class="responsive-text max-w-2xl mx-auto">
+                    From Buddhist Upekkha to Islamic Tawakkul, Christian compassion to Jain Samvar - one universal framework.
                 </p>
-            </div>
-        </section>
-
-        <section id="marketplaces">
-            <div class="max-w-7xl mx-auto w-full text-center">
-                <h2 class="responsive-heading font-bold mb-8">35+ Consciousness Marketplaces</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                    <div class="wisdom-card text-left interactive-element" onclick="exploreMarketplace(1)">
-                        <h3 class="font-bold text-base md:text-lg mb-2">1. Attention Economy</h3>
-                        <p class="text-slate-400 text-xs md:text-sm mb-3">Where focus becomes the ultimate currency</p>
-                        <span class="contribution-badge text-xs">📖 15 min read</span>
-                    </div>
-                    
-                    <div class="wisdom-card text-left interactive-element" onclick="exploreMarketplace(2)">
-                        <h3 class="font-bold text-base md:text-lg mb-2">2. Intimacy Exchange</h3>
-                        <p class="text-slate-400 text-xs md:text-sm mb-3">Trust as the foundation of connection</p>
-                        <span class="contribution-badge text-xs">📖 12 min read</span>
-                    </div>
-                    
-                    <div class="wisdom-card text-left interactive-element" onclick="exploreMarketplace(3)">
-                        <h3 class="font-bold text-base md:text-lg mb-2">3. Belief Systems</h3>
-                        <p class="text-slate-400 text-xs md:text-sm mb-3">Ideas that shape collective reality</p>
-                        <span class="contribution-badge text-xs">📖 18 min read</span>
-                    </div>
-                </div>
-                
-                <div class="mt-8">
-                    <div class="contribution-badge interactive-element" onclick="showSection(4)">
-                        Explore All 35+ Marketplaces
-                    </div>
-                </div>
             </div>
         </section>
 
         <section id="contribution">
-            <div class="max-w-4xl mx-auto w-full text-center">
-                <h2 class="responsive-heading font-bold mb-8">The Contribution Revolution</h2>
+            <div class="max-w-2xl mx-auto w-full text-center">
+                <h2 class="responsive-heading">Contribution Economy</h2>
                 
-                <div class="wisdom-card mb-6">
-                    <h3 class="text-2xl md:text-3xl font-bold mb-4">Free Access, Infinite Value</h3>
-                    <p class="text-slate-300 responsive-text mb-6">
-                        This represents a new economic model: priceless wisdom offered freely, 
-                        creating value through conscious contribution rather than monetary exchange.
+                <div class="content-card mb-6">
+                    <h3 class="text-xl font-600 mb-4">Free Access, Infinite Value</h3>
+                    <p class="responsive-text mb-6">
+                        Priceless wisdom offered freely, creating value through conscious contribution.
                     </p>
                     
-                    <div class="grid md:grid-cols-2 gap-4 md:gap-6 mt-6">
-                        <div class="text-left">
-                            <h4 class="font-bold mb-3 text-lg">For Contributors:</h4>
-                            <ul class="text-slate-400 text-sm md:text-base space-y-2">
-                                <li>• Code contributions via GitHub</li>
-                                <li>• Translations and accessibility</li>
-                                <li>• Content expansions and examples</li>
-                                <li>• Community building and sharing</li>
+                    <div class="grid md:grid-cols-2 gap-4 text-left">
+                        <div>
+                            <h4 class="font-600 mb-2">For Contributors</h4>
+                            <ul class="responsive-subtext space-y-1">
+                                <li>• Code via GitHub</li>
+                                <li>• Translations</li>
+                                <li>• Content expansion</li>
                             </ul>
                         </div>
                         
-                        <div class="text-left">
-                            <h4 class="font-bold mb-3 text-lg">For Supporters:</h4>
-                            <ul class="text-slate-400 text-sm md:text-base space-y-2">
-                                <li>• Open-source AI development</li>
-                                <li>• Digital infrastructure funding</li>
-                                <li>• Educational access programs</li>
-                                <li>• Research and development</li>
+                        <div>
+                            <h4 class="font-600 mb-2">For Supporters</h4>
+                            <ul class="responsive-subtext space-y-1">
+                                <li>• Open-source AI</li>
+                                <li>• Infrastructure</li>
+                                <li>• Education access</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 
-                <!-- GitHub Contribution Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-                    <a class="github-button" href="https://github.com/krishnaheda/ba-ej" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star krishnaheda/ba-ej on GitHub">Star</a>
-                    <a class="github-button" href="https://github.com/krishnaheda/ba-ej/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork krishnaheda/ba-ej on GitHub">Fork</a>
-                    <a class="github-button" href="https://github.com/krishnaheda/ba-ej/issues" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue krishnaheda/ba-ej on GitHub">Issue</a>
-                </div>
-                
-                <div class="contribution-badge mt-6 interactive-element" onclick="openGitHub()">
-                    🎉 Join the GitHub Revolution
+                <div class="wisdom-badge" onclick="openGitHub()">
+                    Join GitHub Revolution
                 </div>
             </div>
         </section>
     </div>
 
     <script>
-        // Revolutionary Navigation System
-        const sections = ['welcome', 'beej-framework', 'marketplaces', 'contribution'];
+        // Revolutionary Minimalist Navigation
+        const sections = ['welcome', 'framework', 'contribution'];
         let currentSection = 0;
-        let totalDataSize = 2.1; // MB for full experience
+        let sectionHistory = [0];
         
         function initializeApp() {
             createProgressDots();
             showSection(0);
-            setupGestureSupport();
+            setupAppleLevelGestures();
         }
         
         function createProgressDots() {
@@ -485,6 +484,11 @@
         }
         
         function showSection(index) {
+            // Update history
+            if (index !== currentSection) {
+                sectionHistory.push(index);
+            }
+            
             // Update current section
             currentSection = index;
             
@@ -499,8 +503,16 @@
             // Update progress dots
             updateProgressDots();
             
-            // Update energy and data savings
+            // Update energy savings
             updateEnergySavings();
+        }
+        
+        function goBack() {
+            if (sectionHistory.length > 1) {
+                sectionHistory.pop(); // Remove current
+                const previousIndex = sectionHistory[sectionHistory.length - 1];
+                showSection(previousIndex);
+            }
         }
         
         function updateProgressDots() {
@@ -513,31 +525,26 @@
         function updateEnergySavings() {
             const loadedFraction = (currentSection + 1) / sections.length;
             const energySaved = 100 - (loadedFraction * 100);
-            const dataUsed = (totalDataSize * loadedFraction).toFixed(1);
-            
             document.getElementById('energyPercent').textContent = Math.round(energySaved) + '%';
-            document.getElementById('dataSaved').textContent = `Data: ${dataUsed}MB/${totalDataSize}MB`;
         }
         
         function pullNextWisdom() {
             const nextSection = (currentSection + 1) % sections.length;
             showSection(nextSection);
-            
-            // Enhanced haptic feedback simulation
             provideHapticFeedback();
         }
         
         function provideHapticFeedback() {
             // Visual feedback
-            const btn = document.querySelector('.pull-btn');
+            const btn = document.querySelector('.nav-btn:not(.back-btn)');
             btn.style.transform = 'scale(0.9)';
             setTimeout(() => {
                 btn.style.transform = 'scale(1)';
             }, 150);
             
-            // Attempt vibration if available
+            // Haptic feedback if available
             if (navigator.vibrate) {
-                navigator.vibrate(50);
+                navigator.vibrate(10);
             }
         }
         
@@ -546,40 +553,35 @@
         }
         
         function exploreConcept(concept) {
-            alert(`Exploring ${concept} concept - This would open detailed exploration in final version`);
-            // In final version, this would navigate to concept details
+            // Minimal feedback for concept exploration
+            const badge = document.createElement('div');
+            badge.textContent = `Exploring ${concept}`;
+            badge.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:black; color:white; padding:1rem; border-radius:1rem; z-index:10000;';
+            document.body.appendChild(badge);
+            setTimeout(() => badge.remove(), 1000);
         }
         
-        function exploreMarketplace(marketplaceId) {
-            alert(`Exploring Marketplace ${marketplaceId} - This would open detailed analysis in final version`);
-            // In final version, this would navigate to marketplace details
-        }
-        
-        // Advanced Gesture Support
-        function setupGestureSupport() {
+        // Apple-Level Gesture Support
+        function setupAppleLevelGestures() {
             let touchStartY = 0;
-            let touchStartX = 0;
+            let touchStartTime = 0;
             
             document.addEventListener('touchstart', (e) => {
                 touchStartY = e.touches[0].clientY;
-                touchStartX = e.touches[0].clientX;
+                touchStartTime = Date.now();
             });
             
             document.addEventListener('touchend', (e) => {
                 const touchEndY = e.changedTouches[0].clientY;
-                const touchEndX = e.changedTouches[0].clientX;
+                const touchDuration = Date.now() - touchStartTime;
                 const diffY = touchStartY - touchEndY;
-                const diffX = touchStartX - touchEndX;
                 
-                // Only respond to significant vertical swipes
-                if (Math.abs(diffY) > 50 && Math.abs(diffY) > Math.abs(diffX)) {
+                // Apple-style: Quick, intentional swipes
+                if (Math.abs(diffY) > 30 && touchDuration < 300) {
                     if (diffY > 0) {
-                        // Swipe up - next section
                         pullNextWisdom();
                     } else {
-                        // Swipe down - previous section
-                        const prevSection = (currentSection - 1 + sections.length) % sections.length;
-                        showSection(prevSection);
+                        goBack();
                     }
                 }
             });
@@ -589,37 +591,28 @@
                 switch(e.key) {
                     case 'ArrowDown':
                     case ' ':
-                    case 'PageDown':
                         e.preventDefault();
                         pullNextWisdom();
                         break;
                     case 'ArrowUp':
-                    case 'PageUp':
                         e.preventDefault();
-                        const prevSection = (currentSection - 1 + sections.length) % sections.length;
-                        showSection(prevSection);
+                        goBack();
                         break;
-                    case 'Home':
-                        e.preventDefault();
+                    case 'Escape':
                         showSection(0);
-                        break;
-                    case 'End':
-                        e.preventDefault();
-                        showSection(sections.length - 1);
                         break;
                 }
             });
             
-            // Mouse wheel support
+            // Mouse wheel (subtle)
             let wheelTimeout;
             document.addEventListener('wheel', (e) => {
                 clearTimeout(wheelTimeout);
                 wheelTimeout = setTimeout(() => {
-                    if (e.deltaY > 0) {
+                    if (e.deltaY > 5) {
                         pullNextWisdom();
-                    } else if (e.deltaY < 0) {
-                        const prevSection = (currentSection - 1 + sections.length) % sections.length;
-                        showSection(prevSection);
+                    } else if (e.deltaY < -5) {
+                        goBack();
                     }
                 }, 50);
             });
@@ -628,7 +621,7 @@
         // Initialize the revolutionary experience
         document.addEventListener('DOMContentLoaded', initializeApp);
         
-        // Service Worker registration for offline capability (in production)
+        // Service Worker ready
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 // navigator.serviceWorker.register('/sw.js');
