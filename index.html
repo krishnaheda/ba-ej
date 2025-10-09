@@ -1,356 +1,117 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BA-EJ: The Marketplace Encyclopedia | AI+ Book</title>
-    <meta name="description" content="Free interactive AI+ book exploring 35+ existential marketplaces. Beej-Bhojy-Bhaji-Bazi framework for conscious evolution.">
-    <meta name="google-adsense-account" content="ca-pub-7582671626839217">
-    <meta name="keywords" content="marketplace, consciousness, AI book, free book, philosophy, economics, digital evolution">
-    
-    <!-- Minimal CSS Framework -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* GitHub Dark Theme */
-        :root {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --text-primary: #f0f6fc;
-            --text-secondary: #8b949e;
-            --accent: #58a6ff;
-            --border: #30363d;
-        }
-        
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-        }
-        
-        .github-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-        
-        .github-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-        
-        .minimal-chart {
-            background: transparent !important;
-        }
-        
-        .icon-button {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            transition: all 0.2s ease;
-        }
-        
-        .icon-button:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BA-EJ: The Marketplace Encyclopedia | AI+ Book</title>
+  <meta name="description" content="Free interactive AI+ book exploring 35+ existential marketplaces. Beej-Bhojy-Bhaji-Bazi framework for conscious evolution." />
+  <meta name="google-adsense-account" content="ca-pub-7582671626839217" />
+  <meta name="keywords" content="marketplace, consciousness, AI book, free book, philosophy, economics, digital evolution" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-primary:#0d1117;--bg-secondary:#161b22;
+      --text-primary:#f0f6fc;--text-secondary:#8b949e;
+      --accent:#58a6ff;--border:#30363d;
+    }
+    body{background:var(--bg-primary);color:var(--text-primary);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+    .github-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:6px;transition:.2s;}
+    .github-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+    .icon-button{background:transparent;border:1px solid var(--border);color:var(--text-secondary);transition:.2s;}
+    .icon-button:hover{border-color:var(--accent);color:var(--accent);}
+  </style>
+
 </head>
+
 <body class="min-h-screen">
-    <!-- Header - GitHub Style -->
-    <header class="border-b border-[#30363d] bg-[#0d1117] sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <div class="w-8 h-8 bg-[#58a6ff] rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-sm">BE</span>
-                    </div>
-                    <nav class="hidden md:flex space-x-6 text-sm">
-                        <a href="#explorations" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Explorations</a>
-                        <a href="#framework" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Framework</a>
-                        <a href="#metrics" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Metrics</a>
-                        <a href="#contribute" class="text-[#f0f6fc] hover:text-[#58a6ff] transition">Contribute</a>
-                    </nav>
-                </div>
-                
-                <div class="flex items-center space-x-3">
-                    <a href="https://github.com/your-repo" target="_blank" class="icon-button w-8 h-8 rounded flex items-center justify-center text-xs">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <button class="bg-[#238636] text-white px-4 py-1 rounded text-sm hover:bg-[#2ea043] transition">
-                        Read Free
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+<header class="border-b border-[#30363d] bg-[#0d1117] sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <div class="w-8 h-8 bg-[#58a6ff] rounded-lg flex items-center justify-center">
+        <span class="text-white font-bold text-sm">BE</span>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-sm">
+        <a href="#framework" class="hover:text-[#58a6ff]">Framework</a>
+        <a href="#metrics" class="hover:text-[#58a6ff]">Metrics</a>
+        <a href="#contribute" class="hover:text-[#58a6ff]">Contribute</a>
+      </nav>
+    </div>
+    <div class="flex items-center space-x-3">
+      <a href="https://github.com/krishnaheda/ba-ej" target="_blank" class="icon-button w-8 h-8 rounded flex items-center justify-center">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://krishnaheda.github.io/ba-ej/" class="bg-[#238636] text-white px-4 py-1 rounded text-sm hover:bg-[#2ea043]">Read Free</a>
+    </div>
+  </div>
+</header>
 
-    <!-- Hero Section - Apple Minimalism -->
-    <section class="border-b border-[#30363d]">
-        <div class="container mx-auto px-4 py-20 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#f0f6fc] to-[#58a6ff] bg-clip-text text-transparent">
-                BA-EJ
-            </h1>
-            <p class="text-xl text-[#8b949e] mb-8 max-w-2xl mx-auto">
-                The Encyclopedia of Existential Marketplaces. 
-                <span class="text-[#58a6ff]">35+ explorations</span> of human consciousness through marketplace dynamics.
-            </p>
-            <div class="flex justify-center space-x-4">
-                <button onclick="startReading()" class="bg-[#238636] text-white px-6 py-3 rounded hover:bg-[#2ea043] transition">
-                    Start Reading Free
-                </button>
-                <a href="#explorations" class="border border-[#30363d] text-[#f0f6fc] px-6 py-3 rounded hover:border-[#58a6ff] transition">
-                    Explore Chapters
-                </a>
-            </div>
-        </div>
-    </section>
+<section class="border-b border-[#30363d] text-center py-20">
+  <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-[#f0f6fc] to-[#58a6ff] bg-clip-text text-transparent">BA-EJ</h1>
+  <p class="text-xl text-[#8b949e] mb-8 max-w-2xl mx-auto">
+    The Encyclopedia of Existential Marketplaces — human consciousness through marketplace dynamics.
+  </p>
+  <a href="https://github.com/krishnaheda/ba-ej" target="_blank" class="bg-[#238636] text-white px-6 py-3 rounded hover:bg-[#2ea043]">View on GitHub</a>
+</section>
 
-    <!-- Explorations Grid - GitHub Cards -->
-    <section id="explorations" class="py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-2 text-center">35 Marketplaces Explored</h2>
-            <p class="text-[#8b949e] text-center mb-12">Click any exploration to read in new tab</p>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Exploration Cards -->
-                <a href="/exploration-1" target="_blank" class="github-card p-6 block">
-                    <div class="flex items-start justify-between mb-3">
-                        <h3 class="font-semibold text-[#f0f6fc]">1. Attention Marketplace</h3>
-                        <span class="text-[#8b949e] text-sm">↗</span>
-                    </div>
-                    <p class="text-[#8b949e] text-sm mb-4">How focus becomes currency in digital economy</p>
-                    <div class="flex items-center space-x-4 text-xs text-[#8b949e]">
-                        <span>📖 15 min read</span>
-                        <span>🌱 Conscious</span>
-                    </div>
-                </a>
+<section id="framework" class="py-20 border-t border-[#30363d]">
+  <h2 class="text-2xl font-bold mb-12 text-center">The Beej-Bhojy-Bhaji-Bazi Framework</h2>
+  <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+    <div class="github-card p-6 text-center"><div class="text-2xl mb-3">🌱</div><h3 class="font-semibold mb-2">Beej</h3><p class="text-[#8b949e] text-sm">Seed – Intention</p></div>
+    <div class="github-card p-6 text-center"><div class="text-2xl mb-3">🍚</div><h3 class="font-semibold mb-2">Bhojy</h3><p class="text-[#8b949e] text-sm">Sustenance – Trade</p></div>
+    <div class="github-card p-6 text-center"><div class="text-2xl mb-3">🥘</div><h3 class="font-semibold mb-2">Bhaji</h3><p class="text-[#8b949e] text-sm">Cooking – Dynamics</p></div>
+    <div class="github-card p-6 text-center"><div class="text-2xl mb-3">🎯</div><h3 class="font-semibold mb-2">Bazi</h3><p class="text-[#8b949e] text-sm">Game – Evolution</p></div>
+  </div>
+</section>
 
-                <a href="/exploration-2" target="_blank" class="github-card p-6 block">
-                    <div class="flex items-start justify-between mb-3">
-                        <h3 class="font-semibold text-[#f0f6fc]">2. Intimacy Marketplace</h3>
-                        <span class="text-[#8b949e] text-sm">↗</span>
-                    </div>
-                    <p class="text-[#8b949e] text-sm mb-4">Vulnerability, trust and emotional exchange</p>
-                    <div class="flex items-center space-x-4 text-xs text-[#8b949e]">
-                        <span>📖 12 min read</span>
-                        <span>❤️ Relational</span>
-                    </div>
-                </a>
+<section id="metrics" class="py-20 border-t border-[#30363d]">
+  <h2 class="text-2xl font-bold mb-12 text-center">Global Impact Metrics</h2>
+  <div class="max-w-3xl mx-auto github-card p-6">
+    <canvas id="gmlChart" height="200"></canvas>
+  </div>
+</section>
 
-                <a href="/exploration-3" target="_blank" class="github-card p-6 block">
-                    <div class="flex items-start justify-between mb-3">
-                        <h3 class="font-semibold text-[#f0f6fc]">3. Belief Marketplace</h3>
-                        <span class="text-[#8b949e] text-sm">↗</span>
-                    </div>
-                    <p class="text-[#8b949e] text-sm mb-4">Trading ideas that shape reality</p>
-                    <div class="flex items-center space-x-4 text-xs text-[#8b949e]">
-                        <span>📖 18 min read</span>
-                        <span>🧠 Philosophical</span>
-                    </div>
-                </a>
+<section id="contribute" class="py-20 border-t border-[#30363d] text-center">
+  <h2 class="text-2xl font-bold mb-4">Contribute & Collaborate</h2>
+  <p class="text-[#8b949e] mb-8 max-w-2xl mx-auto">
+    Join the open-source journey — fork, suggest, translate, or extend. Every pull request adds collective intelligence.
+  </p>
+  <div class="flex justify-center space-x-4">
+    <a href="https://github.com/krishnaheda/ba-ej" target="_blank" class="github-card px-6 py-3 flex items-center space-x-2 hover:border-[#58a6ff]">
+      <i class="fab fa-github"></i><span>Contribute on GitHub</span>
+    </a>
+    <a href="https://github.com/krishnaheda/ba-ej/issues" target="_blank" class="border border-[#30363d] text-[#f0f6fc] px-6 py-3 rounded hover:border-[#58a6ff]">
+      Report or Propose
+    </a>
+  </div>
 
-                <!-- Add more exploration cards following same pattern -->
-                <div class="github-card p-6 text-center">
-                    <p class="text-[#8b949e] text-sm mb-3">32+ more explorations available</p>
-                    <a href="/all-explorations" target="_blank" class="text-[#58a6ff] text-sm hover:underline">
-                        View All Marketplaces →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="mt-12 text-[#8b949e]">
+    <h3 class="font-semibold mb-3 text-white">Top Contributors</h3>
+    <p class="text-sm">
+      View all collaborators on <a href="https://github.com/krishnaheda/ba-ej/graphs/contributors" target="_blank" class="text-[#58a6ff] underline">GitHub →</a>
+    </p>
+  </div>
+</section>
 
-    <!-- Core Framework Section -->
-    <section id="framework" class="py-20 border-t border-[#30363d]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-12 text-center">The Beej-Bhojy-Bhaji-Bazi Framework</h2>
-            
-            <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                <div class="github-card p-6 text-center">
-                    <div class="text-2xl mb-3">🌱</div>
-                    <h3 class="font-semibold mb-2">Beej</h3>
-                    <p class="text-[#8b949e] text-sm">The Seed - Core intention and beginning</p>
-                </div>
-                
-                <div class="github-card p-6 text-center">
-                    <div class="text-2xl mb-3">🍚</div>
-                    <h3 class="font-semibold mb-2">Bhojy</h3>
-                    <p class="text-[#8b949e] text-sm">Sustenance - What's being traded</p>
-                </div>
-                
-                <div class="github-card p-6 text-center">
-                    <div class="text-2xl mb-3">🥘</div>
-                    <h3 class="font-semibold mb-2">Bhaji</h3>
-                    <p class="text-[#8b949e] text-sm">Cooking - Marketplace dynamics</p>
-                </div>
-                
-                <div class="github-card p-6 text-center">
-                    <div class="text-2xl mb-3">🎯</div>
-                    <h3 class="font-semibold mb-2">Bazi</h3>
-                    <p class="text-[#8b949e] text-sm">Game - Outcomes and evolution</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer class="border-t border-[#30363d] py-8 text-center text-sm text-[#8b949e]">
+  © 2024 BA-EJ Project · <a href="https://github.com/krishnaheda/ba-ej" class="text-[#58a6ff] hover:underline">krishnaheda/ba-ej</a>
+</footer>
 
-    <!-- Metrics Section - Minimal Charts -->
-    <section id="metrics" class="py-20 border-t border-[#30363d]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-12 text-center">Global Impact Metrics</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="github-card p-6">
-                    <h3 class="font-semibold mb-4">Consciousness Evolution</h3>
-                    <div class="minimal-chart">
-                        <canvas id="gmlChart" height="200"></canvas>
-                    </div>
-                </div>
-                
-                <div class="github-card p-6">
-                    <h3 class="font-semibold mb-4">Resource Optimization</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span>Data Saved</span>
-                                <span>87%</span>
-                            </div>
-                            <div class="w-full bg-[#30363d] rounded-full h-2">
-                                <div class="bg-[#238636] h-2 rounded-full" style="width: 87%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span>Energy Efficiency</span>
-                                <span>92%</span>
-                            </div>
-                            <div class="w-full bg-[#30363d] rounded-full h-2">
-                                <div class="bg-[#58a6ff] h-2 rounded-full" style="width: 92%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const ctx=document.getElementById('gmlChart');
+  new Chart(ctx,{type:'line',
+    data:{labels:['Q1','Q2','Q3','Q4'],
+    datasets:[{data:[2.8,3.1,3.4,3.7],borderColor:'#58a6ff',borderWidth:2,fill:false}]},
+    options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8b949e'}},y:{ticks:{color:'#8b949e'}}}}});
+});
+</script>
 
-    <!-- Contribution Section -->
-    <section id="contribute" class="py-20 border-t border-[#30363d]">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-4">Open Source Wisdom</h2>
-            <p class="text-[#8b949e] mb-8 max-w-2xl mx-auto">
-                This AI+ book evolves through community contributions. Every insight, translation, or application adds to collective consciousness.
-            </p>
-            
-            <div class="flex justify-center space-x-4">
-                <a href="https://github.com/your-repo" target="_blank" class="github-card px-6 py-3 flex items-center space-x-2 hover:border-[#58a6ff] transition">
-                    <i class="fab fa-github"></i>
-                    <span>Contribute on GitHub</span>
-                </a>
-                <a href="/contribution-guide" target="_blank" class="border border-[#30363d] text-[#f0f6fc] px-6 py-3 rounded hover:border-[#58a6ff] transition">
-                    How to Contribute
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-[#30363d] py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 text-sm">
-                <div>
-                    <h3 class="font-semibold mb-4">BA-EJ</h3>
-                    <p class="text-[#8b949e]">The Encyclopedia of Existential Marketplaces</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-4">Explore</h3>
-                    <ul class="space-y-2 text-[#8b949e]">
-                        <li><a href="/all-explorations" target="_blank" class="hover:text-[#58a6ff] transition">All Marketplaces</a></li>
-                        <li><a href="/framework" target="_blank" class="hover:text-[#58a6ff] transition">Core Framework</a></li>
-                        <li><a href="/research" target="_blank" class="hover:text-[#58a6ff] transition">Research Papers</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-4">Contribute</h3>
-                    <ul class="space-y-2 text-[#8b949e]">
-                        <li><a href="https://github.com/your-repo" target="_blank" class="hover:text-[#58a6ff] transition">GitHub Repository</a></li>
-                        <li><a href="/translations" target="_blank" class="hover:text-[#58a6ff] transition">Translation Guide</a></li>
-                        <li><a href="/community" target="_blank" class="hover:text-[#58a6ff] transition">Community</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-4">Connect</h3>
-                    <div class="flex space-x-3">
-                        <a href="#" class="icon-button w-8 h-8 rounded flex items-center justify-center">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="icon-button w-8 h-8 rounded flex items-center justify-center">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="icon-button w-8 h-8 rounded flex items-center justify-center">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-[#30363d] mt-8 pt-8 text-center text-[#8b949e] text-sm">
-                <p>© 2024 BA-EJ Project. Open source wisdom for conscious evolution.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Minimal JavaScript -->
-    <script>
-        // Simple chart initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            // GML Chart
-            const gmlCtx = document.getElementById('gmlChart').getContext('2d');
-            new Chart(gmlCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                    datasets: [{
-                        label: 'Global Maturity Level',
-                        data: [2.8, 3.1, 3.4, 3.7],
-                        borderColor: '#58a6ff',
-                        backgroundColor: 'transparent',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        pointBackgroundColor: '#58a6ff',
-                        pointBorderColor: '#0d1117',
-                        pointBorderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            grid: { color: '#30363d' },
-                            ticks: { color: '#8b949e' }
-                        },
-                        x: {
-                            grid: { color: '#30363d' },
-                            ticks: { color: '#8b949e' }
-                        }
-                    }
-                }
-            });
-        });
-
-        function startReading() {
-            // Open first exploration in new tab
-            window.open('/exploration-1', '_blank');
-        }
-
-        // Google Analytics (if added later)
-        // Google AdSense is included via meta tag
-    </script>
 </body>
 </html>
